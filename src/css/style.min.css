@@ -15,5 +15,14 @@
   border: 2px solid black;
   padding: 10% 20%;
   font-family: Arial, sans-serif;
-  font-size: 4vmax;
+  font-size: 2vmax;
+}
+
+.cont__task {
+  text-align: left;
+  width: 90%;
+  background-color: #00ccff;
+  border: 2px solid rgba(0, 0, 0, 0.294);
+  font-family: Arial, sans-serif;
+  font-size: 16px;
 }

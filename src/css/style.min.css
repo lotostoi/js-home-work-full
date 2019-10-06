@@ -1,19 +1,203 @@
 .cont {
   display: flex;
   margin: 0 auto;
-  width: 90%;
-  border: 2px solid gray;
+  max-width: 1200px;
+  width: 80%;
+  flex-direction: column;
   background-color: lemonchiffon;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
 }
 
 .cont__test {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
   text-align: center;
-  width: 70%;
+  width: 100%;
   background-color: #00ccff;
   border: 2px solid black;
-  padding: 10% 20%;
+  padding: 5%;
   font-family: Arial, sans-serif;
   font-size: 4vmax;
+}
+
+.cont__text {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.cont__task {
+  display: block;
+  width: 40%;
+  background-color: #00ccff;
+  font-family: Arial, sans-serif;
+  font-size: 2vmax;
+  text-align: left;
+  color: #3d3a3a;
+  transition: transform 200ms linear;
+}
+
+.cont__task:hover {
+  color: orangered;
+}
+
+.cont__task:active {
+  transform: scale(0.8);
+}
+
+.contenerTask1 {
+  padding: 2% 10% 5% 10%;
+  display: flex;
+  flex-direction: column;
+  max-width: 1100px;
+  margin: 0 auto;
+  background-color: lightgray;
+  align-items: center;
+  border-radius: 30px;
+  box-sizing: border-box;
+}
+
+.mainPage {
+  display: flex;
+  width: 80%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  color: deeppink;
+  text-align: left;
+}
+
+.taskDescription {
+  display: flex;
+  width: 80%;
+  margin: 1% auto 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 17px;
+  color: #0c0c0c;
+  font-style: italic;
+  text-align: justify;
+}
+
+.ul_tasks {
+  max-width: 70%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 0 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 17px;
+  color: #0c0c0c;
+  font-style: italic;
+  text-align: justify;
+}
+
+.addDeck {
+  color: #971515;
+}
+
+.outputRange {
+  padding-left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  width: 250px;
+  margin: 1% auto 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.o3 {
+  width: 350px;
+}
+
+.maxRange,
+.minRange {
+  max-width: 100px;
+}
+
+.contForButton {
+  margin: 20px 0;
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.buttonTask1 {
+  display: flex;
+  min-width: 20%;
+  margin: 1% auto 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.conOut {
+  margin-top: 20px;
+  display: flex;
+  min-width: 500px;
+  min-height: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  justify-content: center;
+}
+
+.outputField {
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  max-width: 90%;
+  background-color: white;
+  text-align: center;
+}
+
+.pageShop {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  border: 1px solid #555555;
+  justify-content: space-around;
+}
+
+.contCorz {
+  display: flex;
+  width: 1005px;
+  justify-content: flex-end;
+  margin: 20px 20px 20px;
+}
+
+.contCorz__count {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  margin-bottom: 30px;
+  margin-left: -10px;
+  text-align: center;
+  background-color: #ffffff;
+}
+
+.contCorz__ollSum {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 50px;
+  height: 25px;
+  margin-top: 20px;
+  max-lines: -20px;
+  border-radius: 3px;
+  background-color: #ffffff;
+}
+
+.product {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  margin: 5px;
+  align-items: center;
 }

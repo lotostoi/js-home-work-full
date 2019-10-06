@@ -1,19 +1,54 @@
 .cont {
     display: flex;
     margin: 0 auto;
-    width: 90%;
-    border: 2px solid gray;
+    max-width: 1200px;
+    width: 80%;
+   // border: 2px solid gray;
+    flex-direction: column;
     background-color: lemonchiffon;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
+
 
     &__test {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
         text-align: center;
-        width: 70%;
+        width: 100%;
         background-color: rgb(0, 204, 255);
         border: 2px solid black;
-        padding: 10% 20%;
+        padding: 5%;
         font-family: Arial, sans-serif;
         font-size: 4vmax;
     }
+
+    &__text {
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+
+    &__task {
+        display: block;
+        width: 40%;
+        background-color: rgb(0, 204, 255);
+        font-family: Arial, sans-serif;
+        font-size: 2vmax;
+        text-align: left;
+        color: rgb(61, 58, 58);
+        transition: transform 200ms linear;
+        &:hover {
+            color: orangered;
+        }
+        &:active {
+         transform: scale(0.8); 
+        }
+    }
+
+
 }
+
+@import "task1";
+@import "task2";

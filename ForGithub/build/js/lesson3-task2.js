@@ -6,11 +6,9 @@ button = d.querySelectorAll('.product__button')
 let tt = "кккк"
 
 
-function pop()  {
-    per = this.parentNode
-    dataId= per.getAttribute("data-id")
-  
-    console.log('yyy' +  per.getAttribute("data-id"))
+function pop(button)  {
+    itemId = button.getAttribute('data-id')
+    console.log(itemId)
 }
 
 
@@ -22,7 +20,7 @@ for (let i = 0; i < button.length; i++) {
 
    // button[i].textContent = tt
 
-   button[i].onclick = pop
+   button[i].onclick = "pop(this)"
 
 
 }

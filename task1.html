@@ -12,21 +12,25 @@
 <body>
     <div class="contenerTask1">
         <a href="index.html" class="mainPage">Главная</a>
-        <p class="taskDescription">Задание: С помощью цикла while вывести все простые числа в промежутке от minRange до
-            maxRange.
-            
-        <p class="taskDescription addDeck">
-                Что бы вывести числа вопользуйтесь формой ниже, или консолью (вызвав функцию f1(minRange,maxRsnge)).
+        <p class="taskDescription">1. Написать функцию, преобразующую число в объект. Передавая на вход число от 0 до 999, мы должны получить на выходе объект, в котором в соответствующих свойствах описаны единицы, десятки и сотни. Например, для числа 245 мы должны получить следующий объект: {‘единицы’: 5, ‘десятки’: 4, ‘сотни’: 2}. Если число превышает 999, необходимо выдать соответствующее сообщение с помощью console.log и вернуть пустой объект.
         </p>
-        <p class="outputRange"> Введите maxRange <input type="text" id='v1' class='maxRange'></p>
-        <p class="outputRange"> Введите minRange <input type="text" id='v2' class='minRange'></p>
-        <button class="buttonTask1" onClick="myScript1()">Вывести числа</button>
+       <!--  <p class="taskDescription addDeck">
+               Что бы нарисовать пирамиду с помощью команды console.log, вызовите, в коносли,  функцию f5();
+               
+        </p> -->
+        <p class="outputRange o3"> Введите число <input type="text" id='top' class='maxRange'></p>
+        <div class="contForButton">
+            <button class="buttonTask1" onClick="myScript5()">Вывести объект</button>
+        </div>
         <div class="conOut">
             <div class="outputField" id='out'></div>
         </div>
-
+        </div>
+        <div class="conOut">
+            <div class="outputField" id='out'></div>
+        </div>
     </div>
-    <script src="./build/js/Lesson3-task1.js"></script>
+    <script src="./build/js/lesson3-task1.js"></script>
 
 </body>
 

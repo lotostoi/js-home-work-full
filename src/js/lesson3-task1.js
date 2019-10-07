@@ -1,50 +1,44 @@
-//1. С помощью цикла while вывести все простые числа в промежутке от 0 до 100 (УТОЧНИТЬ НАСЧЕТ ПРОСТЫХ ЧИСЕЛ)
+/* 
+Написать функцию, преобразующую число в объект. Передавая на вход число от 0 до 999, мы 
+должны получить на выходе объект, в котором в соответствующих свойствах описаны единицы, десятки
+и сотни. Например, для числа 245 мы должны получить следующий объект: 
+{‘единицы’: 5, ‘десятки’: 4, ‘сотни’: 2}. Если число превышает 999, необходимо выдать
+соответствующее сообщение с помощью console.log и вернуть пустой объект. */
 
-let f1 = (minRange,maxRange) => {
-    
-    let comp = (number) => (minRange - 1) / number > 1 && (minRange - 1) % number === 0
-    console.log("Простые числа из диапазона от " + minRange + " до " + maxRange + ": ")
-  
-    while ((minRange++) <= maxRange) {
+let d = document
+let div = d.getElementById('out')
 
-        if (((minRange - 1) === 1 || comp(2) || comp(3) || comp(5) || comp(7) || comp(9)) === false) {
-           console.log(minRange - 1)
-         
-        }
+let createrObj = (numb) => {
+    typeof (numb) === "number" ? arg = String(numb): arg = numb
+    let arr = [...arg]
+    let numbObj = { //создаем объект
+        'сотни': 0,
+        'десятки': 0,
+        'единицы': 0,
     }
 
+    while (arr.length < 3) { // добавляем в обект 0-ли если введенное чсило не трехзначное
+        arr.unshift('0')
+    }
+
+    let j = 0;
+    for (const i in numbObj) { //заполняем объект
+        numbObj[i] = arr[j]
+        j++
+    }
+    return numbObj
 }
 
 
-
-let myScript1 = () => {
-
-    let f1 = (minRange, maxRange) => {
-
-        let comp = (number) => (minRange - 1) / number > 1 && (minRange - 1) % number === 0
-
-        let string = "Простые числа из диапазона от " + minRange + " до " + maxRange + ": "
-
-        while ((minRange++) <= maxRange) {
-
-            if (((minRange - 1) === 1 || comp(2) || comp(3) || comp(5) || comp(7) || comp(9)) === false) {
-              
-                string += ' ' + (minRange - 1)
-            }
-        }
-        return string
-
+let myScript5 = () => { // получаем число из HTML
+    let number = document.getElementById('top').value;
+    if (!isNaN(number) && number >= 0 && number <= 999) {
+        document.getElementById('top').value = '';
+        let obj = createrObj(number)
+        div.innerHTML = '{сотни: ' + obj.сотни + ', десятки: ' + obj.десятки + ', единици: ' + obj.единицы + '}'
+        console.log(obj)
+    } else {
+        div.innerHTML = 'Вы ввели неверное значение'
+        document.getElementById('top').value = '';
     }
-
-    let min = document.getElementById('v1').value
-    let max = document.getElementById('v2').value
-
-    document.getElementById('v1').value = '';
-    document.getElementById('v2').value = '';
-
-    let div = document.getElementById('out');
-
-
-    (min === "" || max === "" || isNaN(min) || isNaN(max)) ? div.innerHTML = 'Вы ввели некорректные значения': div.innerHTML = f1(min, max)
-
 }

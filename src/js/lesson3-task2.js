@@ -1,12 +1,13 @@
-let linkPref = "./img/bike"
+let linkPref = "./img/phon"
 const NAMES = ['5.9" Смартфон Samsung Galaxy A40 64 ГБ белый', '5.9" Смартфон Samsung Galaxy A40 64 ГБ красный', '5.9" Смартфон Samsung Galaxy A40 64 ГБ синий', '5.9" Смартфон Samsung Galaxy A40 64 ГБ черный', '6.4" Смартфон Samsung Galaxy A50 128 ГБ белый', '6.4" Смартфон Samsung Galaxy A50 128 ГБ синий', '6.4" Смартфон Samsung Galaxy A50 128 ГБ черный', '6.7" Смартфон Samsung Galaxy A70 128 ГБ белый', '6.7" Смартфон Samsung Galaxy A70 128 ГБ синий', '6.7" Смартфон Samsung Galaxy A80 128 ГБ золотистый', '6.7" Смартфон Samsung Galaxy A80 128 ГБ серебристый']
 const PRISE = [10000, 12000, 13000, 18000, 25000, 25000, 30000, 30000, 35000, 60000, 61000]
 const ID = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 const LINK = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-const DATABASE = [NAMES,PRISE,ID,LINK]
+const DATABASE = [NAMES, PRISE, ID, LINK]
 
 LINK.forEach((e, i) => LINK[i] = linkPref + (i + 1) + '.jpg')
 
+let d = document;
 
 let shop = {
     cotalog: [],
@@ -18,43 +19,88 @@ let shop = {
             prise: 0,
             id: 0
         }
-        objProduct.test=5;
         for (let i = 0; i < DATABASE[1].length; i++) {
             objProduct = {
                 link: LINK[i],
                 name: NAMES[i],
                 prise: PRISE[i],
-                test: ID[i]
-            }        
+                id: ID[i]
+            }
             this.cotalog.push(objProduct)
         }
     },
-    addObgToCard: function (obj) {
-        this.cart.push()
-    } 
+    addObgToCard: function (idd) {
+        for (let i = 0; i < this.cotalog.length; i++)
+            if (this.cotalog[i].id == idd) {
+                this.cart.push(this.cotalog[i])
+            }
+    }
 }
 
-shop.buildAarr()
+
+shop.buildAarr() // создаем  массив магазина
+
+function createProduct(i) { //  функция создания карточки товара на странице html
+    let d = document
+    let contShop = d.getElementsByClassName('pageShop')[0]
+
+    let div = document.createElement('div');
+    div.className = "product"
+    contShop.appendChild(div)
+
+    let img = d.createElement('img')
+    img.src = shop.cotalog[i].link
+    img.className = 'product__img'
+    img.height = 300
+    div.appendChild(img)
+
+    let h4 = d.createElement('h4')
+    h4.className = 'product__name'
+    h4.innerHTML = shop.cotalog[i].name
+    div.appendChild(h4)
+
+    let prise = d.createElement('span')
+    prise.className = 'product__name'
+    prise.innerHTML = shop.cotalog[i].prise
+    div.appendChild(prise)
+
+    let valuta = d.createElement('span')
+    valuta.className = 'product__valuta'
+    valuta.innerHTML = ' руб'
+    prise.appendChild(valuta)
+
+    let button = d.createElement('button')
+    button.className = 'product__button'
+    button.id = shop.cotalog[i].id
+    button.innerHTML = 'в корзину'
+    div.appendChild(button)
+}
 
 
-let d=document
-let contShop=d.getElementsByClassName('pageShop')[0]
+function inputProduct(arr) { // функция вывода карточек товара на страницу
+    for (let i = 0; i < arr.length; i++) {
+        createProduct(i)
+    }
+}
 
-let div = document.createElement('div');
-div.className = "product"
-contShop.appendChild(div)
+inputProduct(DATABASE[1])
 
-let img=d.createElement('img')
-img.src=shop.cotalog[0].link
-img.width=200
-div.appendChild(img)
+let buttons = d.getElementsByClassName('product__button')
 
+for (let i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', workClike, Boolean)
+}
 
-img.src=shop.cotalog[0].link
-img.width=200
-div.appendChild(img)
+function workClike() {
+    let per = this.parentNode // получаем родительский элемент
+    shop.addObgToCard(per.childNodes[3].id) // добавляем товар в корзину  по id
+    per.childNodes[3].className +=" product__button-activ"
+    per.childNodes[3].innerHTML = " в корзине"
+    let countCat=d.getElementById('idcount')
 
-let h4=d.createElement('prise')
-h4.className='product__name'
-h4.innerHTML=shop.cotalog[0].name
-div.appendChild(h4)
+    let count = shop.cart.length
+    
+    countCat.innerHTML = count
+
+}
+

@@ -15,11 +15,16 @@
             <a href="index.html" class="header__mainPage">Главная</a>
             <h1 class="header__h1">Задание: Работа над корзиной! </h1>
             <div class="contCorz">
-                <a href="#" class="contCorz__img">
+                <label for="cart" class="contCorz__label">
                     <img src="./img/korzina.png" width="50px" alt="korzina" class="contCorz__img">
-                </a>
+                </label>
+                <input type="checkbox" id='cart' class="contCorz__input">
+                <div class="contCorz__contProduct">
+                        <div class="productCart"></div>
+                        <button class="contCorz__button" onclick="clean()">Очистить корзину</button> 
+                </div>
                 <div class="contCorz__count" id='idcount'>0</div>
-                <div class="contCorz__ollSum" id='idSum'></div>
+                <div class="contCorz__ollSum" id='idSum'>0</div>
             </div>
         </div>
 

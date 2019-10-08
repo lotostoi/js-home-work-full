@@ -30,13 +30,21 @@ let shop = {
         }
     },
     addObgToCard: function (idd) {
-        for (let i = 0; i < this.cotalog.length; i++)
+        for (let i = 0; i < this.cotalog.length; i++) {
             if (this.cotalog[i].id == idd) {
                 this.cart.push(this.cotalog[i])
             }
+        }
+    },
+    summCart: function () {
+        let sum = 0;
+        this.cart.forEach((el, i) => {
+            sum += this.cart[i].prise
+        })
+        return sum
     }
-}
 
+}
 
 shop.buildAarr() // создаем  массив магазина
 
@@ -83,24 +91,36 @@ function inputProduct(arr) { // функция вывода карточек т�
     }
 }
 
-inputProduct(DATABASE[1])
+inputProduct(DATABASE[1])  // выводим карточки товара в HTML
 
-let buttons = d.getElementsByClassName('product__button')
+let buttons = d.getElementsByClassName('product__button') // достаем массив объектов кнопок
 
-for (let i = 0; i < buttons.length; i++) {
-    buttons[i].addEventListener('click', workClike, Boolean)
+for (let i = 0; i < buttons.length; i++) { // вешаем на кнопки обработчик кликов
+    buttons[i].addEventListener('click', workClike)
 }
 
+let arrId = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] // массив для подсчета кликнутых иди
+
 function workClike() {
+
     let per = this.parentNode // получаем родительский элемент
+
     shop.addObgToCard(per.childNodes[3].id) // добавляем товар в корзину  по id
-    per.childNodes[3].className +=" product__button-activ"
-    per.childNodes[3].innerHTML = " в корзине"
-    let countCat=d.getElementById('idcount')
 
-    let count = shop.cart.length
-    
-    countCat.innerHTML = count
+    let valieId = per.childNodes[3].id - 1 // создаем перменную кликнутого id
 
+    arrId[valieId] == 0 ? arrId[valieId] = 1 : arrId[valieId]++ // считаем клики id
+
+    per.childNodes[3].className += " product__button-activ" // добавляем класс для нажатой кнопки 
+
+    per.childNodes[3].innerHTML = " в корзине (" + arrId[valieId] +" шт)" //меняем надпись на кнопке
+
+    let countCat = d.getElementById('idcount') // элемент для вывода счетчика корзины
+
+    let sCart = d.getElementById('idSum') // элемент для вывода сумы корзины
+
+    countCat.innerHTML = shop.cart.length //выводим счетчик корзины в html
+
+    sCart.innerHTML = shop.summCart() + 'руб'//выводим суму корзины в html 
 }
 

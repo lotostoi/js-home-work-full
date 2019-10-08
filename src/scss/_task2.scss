@@ -1,110 +1,131 @@
 .contenerShop {
-    display: flex;
-    max-width: 1400px;
-    margin: 0 auto;
-    flex-wrap: wrap;
-
-
+  display: flex;
+  max-width: 1400px;
+  margin: 0 auto;
+  flex-wrap: wrap;
 }
 
 .header {
-    width: 100%;
-    display: flex;
-    padding: 5%;
-    background-color: #000000;
-    flex-direction: column;
+  width: 100%;
+  display: flex;
+  padding: 5%;
+  background-color: #000000;
+  justify-content: space-between;
+  align-items: center;
 
-    &__h1 {
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 25px;
-        color: #ffffff;
-    }
+  &__mainPage {
+    display: flex;
+    //width: 80%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color: deeppink;
+    text-align: left;
+  }
+
+  &__h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    color: #ffffff;
+  }
 }
 
-
 .pageShop {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    border: 1px solid #c5c1c1;
-    justify-content: space-around;
-    background-color: lavenderblush;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  border: 1px solid #c5c1c1;
+  justify-content: space-around;
+  background-color: lavenderblush;
 }
 
 .contCorz {
+  display: flex;
+  //width: 100%;
+  justify-content: flex-end;
+  margin: 20px 20px 20px;
+  position: relative;
+  &__img:hover {
+      transform: scale(1.02)
+  }
+  &__img:active {
+      transform: scale(.98)
+  }
+
+
+  &__count {
     display: flex;
-    width: 100%;
-    justify-content: flex-end;
-    margin: 20px 20px 20px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    margin-bottom: 30px;
+    margin-left: -10px;
+    text-align: center;
+    background-color: #ffffff;
+  }
 
-    &__count {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 50%;
-        width: 25px;
-        height: 25px;
-        margin-bottom: 30px;
-        margin-left: -10px;
-        text-align: center;
-        background-color: #ffffff;
-    }
-
-    &__ollSum {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        width: 50px;
-        height: 25px;
-        margin-top: 20px;
-        max-lines: -20px;
-        border-radius: 3px;
-        background-color: #ffffff;
-    }
+  &__ollSum {
+    position: absolute;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    // width: 100px;
+    padding: 0 5px;
+    height: 25px;
+    margin-top: 20px;
+    max-lines: -20px;
+    border-radius: 3px;
+    background-color: #000000;
+    color: #ffffff;
+    justify-content: center;
+    bottom: -26px;
+    left: -8px;
+  }
 }
 
 .product {
-    display: flex;
-    flex-direction: column;
-    width: 30%;
-    border: 1px solid rgb(209, 200, 200);
-    border-radius: 3px;
-    margin: 5px;
-    align-items: center;
-    background-color: #ffffff;
-    padding: 5px;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  border: 1px solid rgb(209, 200, 200);
+  border-radius: 3px;
+  margin: 5px;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 5px;
+  justify-content: space-between;
 
-    &__img {
-        height: 60% !important;
-
+  &__img {
+    height: 60% !important;
+  }
+  &__name {
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+  }
+  &__valuta {
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  &__button {
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: darkgray;
+    border-radius: 5px;
+    width: 35%;
+    min-height: 35px;
+    border: none;
+    outline: none;
+    transition: background-color 1000ms linear, color 1000ms linear, width 200ms linear;
+    &-activ {
+      color: yellow;
+      background-color: #2b2525;
+      width: 40%;
     }
-    &__name{
-      font-size: 16px;
-      font-family: Arial, Helvetica, sans-serif;
-      text-align: center;
+    &:hover {
+      //background-color: pink;
+      border: 1px solid rgb(177, 160, 160);
     }
-    &__valuta{
-      font-size: 16px;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-    &__button{
-      font-size: 16px;
-      font-family: Arial, Helvetica, sans-serif;
-      background-color: darkgray;
-      border-radius: 5px;
-      width: 30%;
-      min-height: 35px;
-      border: none;
-      outline: none;
-      transition: background-color 1000ms linear, color 1000ms linear;
-        &-activ{
-            color:yellow;
-            background-color: #2b2525;
-        }
-        &:hover{
-            //background-color: pink;
-            border: 1px solid rgb(177, 160, 160);
-        }
-    }
+  }
 }

@@ -166,7 +166,16 @@
   display: flex;
   padding: 5%;
   background-color: #000000;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__mainPage {
+  display: flex;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  color: deeppink;
+  text-align: left;
 }
 
 .header__h1 {
@@ -186,9 +195,17 @@
 
 .contCorz {
   display: flex;
-  width: 100%;
   justify-content: flex-end;
   margin: 20px 20px 20px;
+  position: relative;
+}
+
+.contCorz__img:hover {
+  transform: scale(1.02);
+}
+
+.contCorz__img:active {
+  transform: scale(0.98);
 }
 
 .contCorz__count {
@@ -205,15 +222,20 @@
 }
 
 .contCorz__ollSum {
+  position: absolute;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  width: 50px;
+  padding: 0 5px;
   height: 25px;
   margin-top: 20px;
   max-lines: -20px;
   border-radius: 3px;
-  background-color: #ffffff;
+  background-color: #000000;
+  color: #ffffff;
+  justify-content: center;
+  bottom: -26px;
+  left: -8px;
 }
 
 .product {
@@ -249,16 +271,17 @@
   font-family: Arial, Helvetica, sans-serif;
   background-color: darkgray;
   border-radius: 5px;
-  width: 30%;
+  width: 35%;
   min-height: 35px;
   border: none;
   outline: none;
-  transition: background-color 1000ms linear, color 1000ms linear;
+  transition: background-color 1000ms linear, color 1000ms linear, width 200ms linear;
 }
 
 .product__button-activ {
   color: yellow;
   background-color: #2b2525;
+  width: 40%;
 }
 
 .product__button:hover {

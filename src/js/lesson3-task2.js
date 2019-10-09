@@ -12,10 +12,11 @@ let classImgCart = 'contCorz__product__imgCart' // css class img
 let varClassName = 'product__name' // css class nane
 let varClassNameCart = 'contCorz__product__nameCart' // css class nane
 let classPrise = 'product__prise' // css class img
-let classPriseCart = 'contCorz__product__priseCart' // css class img
+let classPriseCart = 'contCorz__product__priseCart' // css class PriseCart
+let classQuentlyCart = 'contCorz__product__quentlyCart' // css class PriseCart
 let classButton = 'product__button' // css class button
 let classButtonActiv = " product__button-activ" //css class activ
-
+let f=1
 
 LINK.forEach((e, i) => LINK[i] = linkPref + (i + 1) + '.jpg')
 
@@ -29,30 +30,53 @@ let shop = {
             link: 0,
             name: 0,
             prise: 0,
-            id: 0
+            id: 0,
+            quentlyInCart: 0
         }
         for (let i = 0; i < DATABASE[1].length; i++) {
             objProduct = {
                 link: LINK[i],
                 name: NAMES[i],
                 prise: PRISE[i],
-                id: ID[i]
+                id: ID[i],
+                quentlyInCart: 0
             }
             this.cotalog.push(objProduct)
         }
     },
     addObgToCard: function (idd) {
+        let fl = 0
         for (let i = 0; i < this.cotalog.length; i++) {
             if (this.cotalog[i].id == idd) {
-                this.cart.push(this.cotalog[i])
+
+                if (this.cart.length === 0) {
+                    this.cart.push(this.cotalog[i])
+                    this.cart[0].quentlyInCart = 1
+                }
+
+                else {
+                    this.cart.forEach((el, j) => {
+                        console.log(this.cotalog[i].id +' '+  el.id)
+
+                        if (this.cotalog[i].id === el.id) {
+                            this.cart[j].quentlyInCart += 1
+                            console.log(this.cart[j].quentlyInCart)
+                            fl = 1
+                        }
+                    })
+                    if (fl===0) {
+                    this.cotalog[i].quentlyInCart =1
+                    this.cart.push(this.cotalog[i]) }
+                }
             }
         }
+        console.log(this.cart)
     },
     summCart: function (flag) {
         let sum = 0;
         if (flag === 1) {
             this.cart.forEach((el, i) => {
-                sum += this.cart[i].prise
+                sum += this.cart[i].prise*this.cart[i].quentlyInCart
             })
             return sum
         }
@@ -139,7 +163,7 @@ function clean() {
 function createCartProduct(i) { //  функция создания карточки товара в корзине
 
     let contShop = d.getElementsByClassName('productCart')[0]
-    console.log(contShop + '33')
+    //  console.log(contShop + '33')
     let div = document.createElement('div');
     div.className = "contCorz__product"
     contShop.appendChild(div)
@@ -153,19 +177,34 @@ function createCartProduct(i) { //  функция создания карточ
 
     addElltoProduct(div, 'h4', varClassNameCart, shop.cart[i].name, 'none', 'none')
     addElltoProduct(div, 'span', classPriseCart, shop.cart[i].prise + ' руб', 'none', 'none')
+    addElltoProduct(div, 'span', classQuentlyCart, shop.cart[i].quentlyInCart + 'шт.', 'none', 'none')
     // addElltoProduct(div, 'button', classButtonCart, 'в корзину', 'none', shop.cart[i].id)
+
+   // if (f===0) {contShop.slideToggle(400);}
 }
 
-function inputProductInCart() { // функция вывода карточек товара на страницу
+function inputProductInCart() { // функция вывода карточек товара в корзину
     dellElCartHTML()
     let lengthCart = shop.cart.length
     for (let i = 0; i < lengthCart; i++) {
         createCartProduct(i)
     }
-
+  //  $('#Cartt').fadeOut(1500); 
 }
 
-//inputProductInCart()  // выводим карточки товара в HTML
+
+function cartOpen() {
+    if (f===1) {
+        $('#Cartt').slideToggle(400);
+        f=0
+    }else {
+        $('#Cartt').slideUp(400);
+        f=1
+    }
+ 
+console.log(1)
+}
+
 
 function dellElCartHTML() {
     let elemsCart = d.getElementsByClassName('contCorz__product');

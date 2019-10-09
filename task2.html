@@ -14,12 +14,12 @@
         <div class="header">
             <a href="index.html" class="header__mainPage">Главная</a>
             <h1 class="header__h1">Задание: Работа над корзиной! </h1>
-            <div class="contCorz">
-                <label for="cart" class="contCorz__label">
+            <div class="contCorz" >
+                <label for="cart" class="contCorz__label" onclick="cartOpen()">
                     <img src="./img/korzina.png" width="50px" alt="korzina" class="contCorz__img">
                 </label>
                 <input type="checkbox" id='cart' class="contCorz__input">
-                <div class="contCorz__contProduct">
+                <div class="contCorz__contProduct" id='Cartt'>
                         <div class="productCart"></div>
                         <button class="contCorz__button" onclick="clean()">Очистить корзину</button> 
                 </div>
@@ -36,6 +36,7 @@
 
     </div>
     <script src="./build/js/lesson3-task2.js"></script>
+    <script src="./build/js/jQuery.js"></script>
 
 </body>
 

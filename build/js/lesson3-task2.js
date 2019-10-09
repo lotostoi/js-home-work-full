@@ -16,13 +16,13 @@ let classPriseCart = 'contCorz__product__priseCart' // css class PriseCart
 let classQuentlyCart = 'contCorz__product__quentlyCart' // css class PriseCart
 let classButton = 'product__button' // css class button
 let classButtonActiv = " product__button-activ" //css class activ
-let f=1
+let f = 1
 
 LINK.forEach((e, i) => LINK[i] = linkPref + (i + 1) + '.jpg')
 
 let d = document;
 
-let shop = {
+let shop = {   // обЪект магазина 
     cotalog: [],
     cart: [],
     buildAarr: function () {
@@ -52,11 +52,9 @@ let shop = {
                 if (this.cart.length === 0) {
                     this.cart.push(this.cotalog[i])
                     this.cart[0].quentlyInCart = 1
-                }
-
-                else {
+                } else {
                     this.cart.forEach((el, j) => {
-                        console.log(this.cotalog[i].id +' '+  el.id)
+                        console.log(this.cotalog[i].id + ' ' + el.id)
 
                         if (this.cotalog[i].id === el.id) {
                             this.cart[j].quentlyInCart += 1
@@ -64,19 +62,19 @@ let shop = {
                             fl = 1
                         }
                     })
-                    if (fl===0) {
-                    this.cotalog[i].quentlyInCart =1
-                    this.cart.push(this.cotalog[i]) }
+                    if (fl === 0) {
+                        this.cotalog[i].quentlyInCart = 1
+                        this.cart.push(this.cotalog[i])
+                    }
                 }
             }
         }
-        console.log(this.cart)
     },
     summCart: function (flag) {
         let sum = 0;
         if (flag === 1) {
             this.cart.forEach((el, i) => {
-                sum += this.cart[i].prise*this.cart[i].quentlyInCart
+                sum += this.cart[i].prise * this.cart[i].quentlyInCart
             })
             return sum
         }
@@ -85,17 +83,34 @@ let shop = {
             sum = 0
             return sum
         }
+    },
+    quently: function () {
+        let summ=0;
+        this.cart.forEach((el,i)=> {
+            summ += el.quentlyInCart
+            console.log(el.quentlyInCart)
+        })
+        return summ
     }
+
 }
 
 shop.buildAarr() // создаем  массив магазина
 
 function addElltoProduct(nameParent, typeEl, classEl, valueEl, linkEl, idEl) { //функция создания тега в теге nameParent
-    let nameEl = d.createElement(typeEl)                   // синтаксис addElltoProduct(arg,'arg',arg,arg,arg,arg)
-    if (classEl != 'none') { nameEl.className = classEl }
-    if (valueEl != 'none') { nameEl.innerHTML = valueEl }
-    if (linkEl != 'none') { nameEl.src = linkEl }
-    if (idEl != 'none') { nameEl.id = idEl }
+    let nameEl = d.createElement(typeEl) // синтаксис addElltoProduct(arg,'arg',arg,arg,arg,arg)
+    if (classEl != 'none') {
+        nameEl.className = classEl
+    }
+    if (valueEl != 'none') {
+        nameEl.innerHTML = valueEl
+    }
+    if (linkEl != 'none') {
+        nameEl.src = linkEl
+    }
+    if (idEl != 'none') {
+        nameEl.id = idEl
+    }
     nameParent.appendChild(nameEl)
 }
 
@@ -119,7 +134,7 @@ function inputProduct(arr) { // функция вывода карточек т�
     }
 }
 
-inputProduct(DATABASE[1])  // выводим карточки товара в HTML
+inputProduct(DATABASE[1]) // выводим карточки товара в HTML
 
 let buttons = d.getElementsByClassName(classButton) // достаем массив объектов кнопок
 for (let i = 0; i < buttons.length; i++) { // вешаем на кнопки обработчик
@@ -137,12 +152,48 @@ function workClike() { // обработчик кликов
     let countCat = d.getElementById('idcount') // элемент для вывода счетчика корзины
     let sCart = d.getElementById('idSum') // элемент для вывода сумы корзины
     countCat.innerHTML = shop.cart.length //выводим счетчик корзины в html
-    sCart.innerHTML = shop.summCart(1) + 'руб'//выводим суму корзины в html 
+    sCart.innerHTML = shop.summCart(1) + 'руб' //выводим суму корзины в html 
     inputProductInCart()
-
+    let valueTegButtonCart=d.getElementById('buttonCart')
+    valueTegButtonCart.innerHTML="Очистить корзину"
+    let SumCart=d.getElementById('sum')
+    SumCart.innerHTML=shop.summCart(1) + " руб"
+    let QuentlyCart=d.getElementById('quently')
+    QuentlyCart.innerHTML=shop.quently() + " шт."
 }
 
-function clean() {
+
+function createCartProduct(i) { //  функция создания карточки товара в корзине
+    let contShop = d.getElementsByClassName('productCart')[0]
+    let div = document.createElement('div');
+    div.className = "contCorz__product"
+    contShop.appendChild(div)
+    let contImg = document.createElement('div');
+    contImg.className = "contCorz__contImg"
+    div.appendChild(contImg)
+    addElltoProduct(contImg, 'img', classImgCart, 'none', shop.cart[i].link, 'none')
+    addElltoProduct(div, 'h4', varClassNameCart, shop.cart[i].name, 'none', 'none')
+    addElltoProduct(div, 'span', classPriseCart, shop.cart[i].prise + ' руб', 'none', 'none')
+    addElltoProduct(div, 'span', classQuentlyCart, shop.cart[i].quentlyInCart + ' шт.', 'none', 'none')
+}
+
+function inputProductInCart() { // функция вывода карточек товара в корзину
+    dellElCartHTML()
+    let lengthCart = shop.cart.length
+    for (let i = 0; i < lengthCart; i++) {
+        createCartProduct(i)
+    }
+}
+
+
+function dellElCartHTML() { //  функция удаления элементов  HTML из корзины
+    let elemsCart = d.getElementsByClassName('contCorz__product');
+    while (elemsCart[0]) {
+        elemsCart[0].parentNode.removeChild(elemsCart[0]);
+    }
+}
+
+function clean() {   // функция полной очитски корзыны
     let buttun = d.getElementsByClassName(classButtonActiv) // получаем родительский элемент
     arrId = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     let sCart = d.getElementById('idSum') // элемент для вывода сумы корзины
@@ -155,60 +206,25 @@ function clean() {
             buttun[i].className = classButton
         }
     }
+
+    let valueTegButtonCart=d.getElementById('buttonCart')
+    valueTegButtonCart.innerHTML="Корзина пуста"
+    let SumCart=d.getElementById('sum')
+    SumCart.innerHTML=0 + " руб"
+    let QuentlyCart=d.getElementById('quently')
+    QuentlyCart.innerHTML=0 + " шт."
+
+
     dellElCartHTML()
 }
 
 
-
-function createCartProduct(i) { //  функция создания карточки товара в корзине
-
-    let contShop = d.getElementsByClassName('productCart')[0]
-    //  console.log(contShop + '33')
-    let div = document.createElement('div');
-    div.className = "contCorz__product"
-    contShop.appendChild(div)
-
-    let contImg = document.createElement('div');
-    contImg.className = "contCorz__contImg"
-    div.appendChild(contImg)
-
-
-    addElltoProduct(contImg, 'img', classImgCart, 'none', shop.cart[i].link, 'none')
-
-    addElltoProduct(div, 'h4', varClassNameCart, shop.cart[i].name, 'none', 'none')
-    addElltoProduct(div, 'span', classPriseCart, shop.cart[i].prise + ' руб', 'none', 'none')
-    addElltoProduct(div, 'span', classQuentlyCart, shop.cart[i].quentlyInCart + 'шт.', 'none', 'none')
-    // addElltoProduct(div, 'button', classButtonCart, 'в корзину', 'none', shop.cart[i].id)
-
-   // if (f===0) {contShop.slideToggle(400);}
-}
-
-function inputProductInCart() { // функция вывода карточек товара в корзину
-    dellElCartHTML()
-    let lengthCart = shop.cart.length
-    for (let i = 0; i < lengthCart; i++) {
-        createCartProduct(i)
-    }
-  //  $('#Cartt').fadeOut(1500); 
-}
-
-
-function cartOpen() {
-    if (f===1) {
+function cartOpen() {  //обработка клика нажатия корзины
+    if (f === 1) {
         $('#Cartt').slideToggle(400);
-        f=0
-    }else {
+        f = 0
+    } else {
         $('#Cartt').slideUp(400);
-        f=1
+        f = 1
     }
- 
-console.log(1)
 }
-
-
-function dellElCartHTML() {
-    let elemsCart = d.getElementsByClassName('contCorz__product');
-    while (elemsCart[0]) {
-        elemsCart[0].parentNode.removeChild(elemsCart[0]);
-    }
-} 

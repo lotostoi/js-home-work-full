@@ -14,14 +14,18 @@
         <div class="header">
             <a href="index.html" class="header__mainPage">Главная</a>
             <h1 class="header__h1">Задание: Работа над корзиной! </h1>
-            <div class="contCorz" >
-                <label for="cart" class="contCorz__label" onclick="cartOpen()">
-                    <img src="./img/korzina.png" width="50px" alt="korzina" class="contCorz__img">
-                </label>
+            <div class="contCorz">
                 <input type="checkbox" id='cart' class="contCorz__input">
+                <label for="cart" class="contCorz__label" onclick="cartOpen()">
+                    <div  class="contCorz__img"></div>
+                </label>
                 <div class="contCorz__contProduct" id='Cartt'>
-                        <div class="productCart"></div>
-                        <button class="contCorz__button" onclick="clean()">Очистить корзину</button> 
+                    <div class="productCart"></div>
+                    <div class="contCorz__summAndQuently">
+                        <span class="contCorz__text">Итого</span>
+                        <span class="contCorz__summ" id='sum'>0</span>
+                        <span class="contCorz__quently" id='quently'>0</span></div>
+                    <button class="contCorz__button" onclick="clean()" id="buttonCart">Корзина пуста</button>
                 </div>
                 <div class="contCorz__count" id='idcount'>0</div>
                 <div class="contCorz__ollSum" id='idSum'>0</div>

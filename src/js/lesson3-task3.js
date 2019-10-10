@@ -38,13 +38,13 @@ function funClikB() {
     if ((you === "бумага") && (computer === "камень")) {
         d.getElementById('left').className = 'windGame__h'
         d.getElementById('right').className = 'windGame__k'
-        d.getElementById('itog').innerHTML = "Ты выиграл"
+        d.getElementById('itog').innerHTML = "Ты выиграл!"
 
     }
     if ((you === "бумага") && (computer === "ножници")) {
         d.getElementById('left').className = 'windGame__h'
-        d.getElementById('right').className = 'windGame__k'
-        d.getElementById('itog').innerHTML = "Ты проиграл"
+        d.getElementById('right').className = 'windGame__n'
+        d.getElementById('itog').innerHTML = "Ты проиграл!"
 
 
     }
@@ -64,13 +64,13 @@ function funClikK() {
     if ((you === "камень") && (computer === "ножници")) {
         d.getElementById('left').className = 'windGame__k'
         d.getElementById('right').className = 'windGame__n'
-        d.getElementById('itog').innerHTML = "Ты выиграл"
+        d.getElementById('itog').innerHTML = "Ты выиграл!"
 
     }
     if ((you === "камень") && (computer === "бумага")) {
         d.getElementById('left').className = 'windGame__k'
         d.getElementById('right').className = 'windGame__h'
-        d.getElementById('itog').innerHTML = "Ты проиграл"
+        d.getElementById('itog').innerHTML = "Ты проиграл!"
 
     }
 
@@ -90,12 +90,12 @@ function funClikN() {
     if ((you === "ножници") && (computer === "бумага")) {
         d.getElementById('left').className = 'windGame__n'
         d.getElementById('right').className = 'windGame__h'
-        d.getElementById('itog').innerHTML = "Ты выиграл"
+        d.getElementById('itog').innerHTML = "Ты выиграл!"
 
     }
     if ((you === "ножници") && (computer === "камень")) {
         d.getElementById('left').className = 'windGame__n'
         d.getElementById('right').className = 'windGame__k'
-        d.getElementById('itog').innerHTML = "Ты проиграл"
+        d.getElementById('itog').innerHTML = "Ты проиграл!"
     }
 }

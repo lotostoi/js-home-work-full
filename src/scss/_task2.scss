@@ -50,10 +50,9 @@
         position: absolute;
         z-index: 50;
         top: 0;
-        right: -91px;
-        width: 360px;
-        padding: 10px 30px;
-        border-radius: 3px 3px 0 0;
+        right: -78px;
+        width: 350px;
+        padding: 10px 70px 10px 0;
     }
 
     &__input {
@@ -98,7 +97,7 @@
         border-radius: 0 0 3px 3px;
         padding: 10px;
         top: 71px;
-        right: -91px;
+        right: -78px;
     }
 
     &__contImg {
@@ -178,6 +177,7 @@
         margin-left: -10px;
         text-align: center;
         background-color: #ffffff;
+        z-index: 100;
     }
 
     &__ollSum {
@@ -196,6 +196,7 @@
         justify-content: center;
         bottom: -26px;
         left: -8px;
+        display: none;
     }
 
     &__summAndQuently {
@@ -303,7 +304,10 @@
         min-height: 35px;
         border: none;
         outline: none;
-        transition: background-color 1000ms linear, color 1000ms linear, width 200ms linear;
+        transition: background-color 100ms linear,  color 100ms linear, width 200ms linear;
+        &:hover {
+            background-color: palevioletred;
+        }
 
         &-activ {
             font-family: Arial, Helvetica, sans-serif;
@@ -311,15 +315,16 @@
             min-height: 35px;
             border: none;
             outline: none;
-            color: yellow;
-            transition: background-color 1000ms linear, color 1000ms linear, width 200ms linear;
+            color: white;
+            transition: background-color 100ms linear, color 100ms linear, width 200ms linear;
             background-color: #2b2525;
             width: 40%;
+            &:hover {
+                background-color: palevioletred;
+                color: black;
+            }
         }
 
-        &:hover {
-            //background-color: pink;
-            border: 1px solid rgb(177, 160, 160);
-        }
+       
     }
 }

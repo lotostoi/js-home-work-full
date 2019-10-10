@@ -22,10 +22,10 @@ LINK.forEach((e, i) => LINK[i] = linkPref + (i + 1) + '.jpg')
 
 let d = document;
 
-let shop = {   // обЪект магазина 
+let shop = {   //   создаем обЪект магазина 
     cotalog: [],
     cart: [],
-    buildAarr: function () {
+    buildAarr: function () { // загружаем данные в обект из масивов бд
         let objProduct = {
             link: 0,
             name: 0,
@@ -44,21 +44,17 @@ let shop = {   // обЪект магазина
             this.cotalog.push(objProduct)
         }
     },
-    addObgToCard: function (idd) {
+    addObgToCard: function (idd) {  // добавляем выбраные товары в корзину объекта
         let fl = 0
         for (let i = 0; i < this.cotalog.length; i++) {
             if (this.cotalog[i].id == idd) {
-
                 if (this.cart.length === 0) {
                     this.cart.push(this.cotalog[i])
                     this.cart[0].quentlyInCart = 1
                 } else {
                     this.cart.forEach((el, j) => {
-                        console.log(this.cotalog[i].id + ' ' + el.id)
-
                         if (this.cotalog[i].id === el.id) {
                             this.cart[j].quentlyInCart += 1
-                            console.log(this.cart[j].quentlyInCart)
                             fl = 1
                         }
                     })
@@ -70,7 +66,7 @@ let shop = {   // обЪект магазина
             }
         }
     },
-    summCart: function (flag) {
+    summCart: function (flag) { // считаем сумму стоимости всех товаров в корзине
         let sum = 0;
         if (flag === 1) {
             this.cart.forEach((el, i) => {
@@ -84,11 +80,10 @@ let shop = {   // обЪект магазина
             return sum
         }
     },
-    quently: function () {
+    quently: function () {  // число всех товаров в корзине
         let summ=0;
         this.cart.forEach((el,i)=> {
             summ += el.quentlyInCart
-            console.log(el.quentlyInCart)
         })
         return summ
     }
@@ -151,7 +146,8 @@ function workClike() { // обработчик кликов
     per.childNodes[3].innerHTML = " в корзине (" + arrId[valieId] + " шт)" //меняем надпись на кнопке
     let countCat = d.getElementById('idcount') // элемент для вывода счетчика корзины
     let sCart = d.getElementById('idSum') // элемент для вывода сумы корзины
-    countCat.innerHTML = shop.cart.length //выводим счетчик корзины в html
+    countCat.innerHTML = shop.quently() //выводим счетчик корзины в html
+    console.log(shop.quently)
     sCart.innerHTML = shop.summCart(1) + 'руб' //выводим суму корзины в html 
     inputProductInCart()
     let valueTegButtonCart=d.getElementById('buttonCart')
@@ -206,15 +202,12 @@ function clean() {   // функция полной очитски корзын�
             buttun[i].className = classButton
         }
     }
-
     let valueTegButtonCart=d.getElementById('buttonCart')
     valueTegButtonCart.innerHTML="Корзина пуста"
     let SumCart=d.getElementById('sum')
     SumCart.innerHTML=0 + " руб"
     let QuentlyCart=d.getElementById('quently')
     QuentlyCart.innerHTML=0 + " шт."
-
-
     dellElCartHTML()
 }
 

@@ -6,12 +6,15 @@
 }
 
 .header {
+    max-width: 1400px;
     width: 100%;
     display: flex;
-    padding: 5%;
+    padding: 1% 5%;
     background-color: #000000;
     justify-content: space-between;
     align-items: center;
+    box-sizing: border-box;
+    position: fixed;
 
     &__mainPage {
         display: flex;
@@ -30,6 +33,7 @@
 }
 
 .pageShop {
+    margin: 135px 0 20px;
     display: flex;
     flex-wrap: wrap;
     width: 100%;
@@ -49,7 +53,7 @@
         justify-content: flex-end;
         position: absolute;
         z-index: 50;
-        top: 0;
+        top: 3px;
         right: -78px;
         width: 350px;
         padding: 10px 70px 10px 0;
@@ -89,6 +93,7 @@
     }
 
     &__contProduct {
+        
         position: absolute;
         width: 400px;
         display: none;
@@ -177,7 +182,7 @@
         margin-left: -10px;
         text-align: center;
         background-color: #ffffff;
-        z-index: 100;
+        //z-index: 100;
     }
 
     &__ollSum {
@@ -269,6 +274,7 @@
 }
 
 .product {
+   
     display: flex;
     flex-direction: column;
     width: 30%;

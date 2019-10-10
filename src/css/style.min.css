@@ -231,7 +231,7 @@
 }
 
 .contCorz__input:checked ~ .contCorz__label > div {
-  background: url(/img/rkest.png) no-repeat;
+  background: url(./../img/rkest.png) no-repeat;
   background-position: center;
   background-size: contain;
   z-index: 100;

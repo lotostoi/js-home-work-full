@@ -479,3 +479,114 @@
   background-color: palevioletred;
   color: black;
 }
+
+.contenerGame {
+  padding: 2% 10% 5% 10%;
+  display: flex;
+  flex-direction: column;
+  max-width: 1100px;
+  margin: 0 auto;
+  background-color: lightgray;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  box-sizing: border-box;
+}
+
+.contenerGame__mainpage {
+  display: flex;
+  width: 80%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  color: deeppink;
+  text-align: left;
+}
+
+.contenerGame__h1 {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  width: 80%;
+  margin: 1% auto 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 17px;
+  color: #0c0c0c;
+  font-style: italic;
+  justify-content: center;
+}
+
+.contenerGame__gameDiscription {
+  display: flex;
+  width: 80%;
+  margin: 1% auto 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 17px;
+  color: #0c0c0c;
+  font-style: italic;
+  justify-content: center;
+  color: red;
+}
+
+.windGame {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.windGame__contButton {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.windGame__button {
+  margin: 10px;
+  height: 70px;
+  width: 70px;
+  font-size: 0;
+}
+
+.windGame__button.bt1 {
+  background: url(./../../img/hand.png) no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.windGame__button.bt2 {
+  background: url(./../../img/kyluck.png) no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.windGame__button.bt3 {
+  background: url(./../../img/nojnic.png) no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.windGame__leftAndRight {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.windGame__left, .windGame__right {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #0f0e0f;
+}
+
+.windGame__rethult {
+  display: flex;
+  height: 70px;
+  width: 70px;
+  background-position: center;
+  background-size: contain;
+}

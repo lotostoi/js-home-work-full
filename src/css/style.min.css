@@ -1,187 +1,66 @@
-.cont {
+.contener {
   display: flex;
   margin: 0 auto;
   max-width: 1200px;
-  width: 80%;
-  flex-direction: column;
-  background-color: lemonchiffon;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-}
-
-.cont__test {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  text-align: center;
   width: 100%;
-  background-color: #00ccff;
-  border: 2px solid black;
-  padding: 5%;
-  font-family: Arial, sans-serif;
-  font-size: 4vmax;
-}
-
-.cont__text {
-  margin-top: 0;
-  margin-bottom: 20px;
-}
-
-.cont__task {
-  display: block;
-  width: 40%;
-  background-color: #00ccff;
-  font-family: Arial, sans-serif;
-  font-size: 2vmax;
-  text-align: left;
-  color: #3d3a3a;
-  transition: transform 200ms linear;
-}
-
-.cont__task:hover {
-  color: orangered;
-}
-
-.cont__task:active {
-  transform: scale(0.8);
-}
-
-.contenerTask1 {
-  padding: 2% 10% 5% 10%;
-  display: flex;
   flex-direction: column;
-  max-width: 1100px;
-  margin: 0 auto;
-  background-color: lightgray;
+  background-color: white;
   align-items: center;
-  border-radius: 30px;
   box-sizing: border-box;
-}
-
-.mainPage {
-  display: flex;
-  width: 80%;
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
-  color: deeppink;
-  text-align: left;
-}
-
-.taskDescription {
-  display: flex;
-  width: 80%;
-  margin: 1% auto 0;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 17px;
-  color: #0c0c0c;
-  font-style: italic;
-  text-align: justify;
 }
 
-.ul_tasks {
-  max-width: 70%;
+.header {
+  max-width: 1200px;
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  margin: 0 0 0 20px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 17px;
-  color: #0c0c0c;
-  font-style: italic;
-  text-align: justify;
-}
-
-.addDeck {
-  color: #971515;
-}
-
-.outputRange {
-  padding-left: 0;
-  display: flex;
-  flex-wrap: wrap;
-  width: 250px;
-  margin: 1% auto 0;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
+  position: fixed;
+  background-color: black;
   align-items: center;
   justify-content: space-between;
 }
 
-.o3 {
-  width: 350px;
+.header__h1 {
+  font-size: 20px;
+  color: #ffffff;
+  margin: 0 0 0 10%;
 }
 
-.maxRange,
-.minRange {
-  max-width: 100px;
-}
-
-.contForButton {
-  margin: 20px 0;
-  width: 50%;
+.header__ul {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-
-.buttonTask1 {
-  display: flex;
-  min-width: 20%;
-  margin: 1% auto 0;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
+  margin-left: 10%;
   align-items: center;
-  justify-content: space-around;
 }
 
-.conOut {
-  margin-top: 20px;
+.header__li {
   display: flex;
-  min-width: 500px;
-  min-height: 30px;
-  background-color: #fff;
-  border-radius: 10px;
-  justify-content: center;
+  font-size: 15px;
+  color: #ee67c1;
+  margin: 0 10px;
+  cursor: pointer;
 }
 
-.outputField {
-  padding: 10px;
-  border-radius: 10px;
+.header__li:hover {
+  color: #cfa8d4;
+}
+
+.dinamikPage {
+  margin-top: 50px;
   display: flex;
-  max-width: 90%;
-  background-color: white;
-  text-align: center;
-}
-
-.contenerShop {
-  display: flex;
-  max-width: 1400px;
-  margin: 0 auto;
-  flex-wrap: wrap;
-}
-
-.header {
-  max-width: 1400px;
   width: 100%;
+  flex-direction: column;
+}
+
+.headerCart {
   display: flex;
   padding: 1% 5%;
   background-color: #000000;
   justify-content: space-between;
   align-items: center;
-  box-sizing: border-box;
-  position: fixed;
 }
 
-.header__mainPage {
-  display: flex;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
-  color: deeppink;
-  text-align: left;
-}
-
-.header__h1 {
+.headerCart__h1 {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 25px;
   color: #ffffff;
@@ -478,147 +357,4 @@
 .product__button-activ:hover {
   background-color: palevioletred;
   color: black;
-}
-
-.contenerGame {
-  padding: 2% 10% 5% 10%;
-  display: flex;
-  flex-direction: column;
-  max-width: 1100px;
-  margin: 0 auto;
-  background-color: lightgray;
-  align-items: center;
-  justify-content: center;
-  border-radius: 30px;
-  box-sizing: border-box;
-}
-
-.contenerGame__mainpage {
-  display: flex;
-  width: 80%;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
-  color: deeppink;
-  text-align: left;
-}
-
-.contenerGame__h1 {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  width: 80%;
-  margin: 1% auto 0;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 20px;
-  color: #0c0c0c;
-  font-style: italic;
-  justify-content: center;
-}
-
-.contenerGame__gameDiscription {
-  display: flex;
-  width: 80%;
-  margin: 1% auto 0;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 19px;
-  color: #0c0c0c;
-  font-style: italic;
-  justify-content: center;
-  color: red;
-}
-
-.windGame {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  align-items: center;
-}
-
-.windGame__contButton {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-}
-
-.windGame__button {
-  margin: 10px;
-  height: 70px;
-  width: 70px;
-  font-size: 0;
-}
-
-.windGame__button.bt1 {
-  background: url(./../../img/hand.png) no-repeat;
-  background-position: center;
-  background-size: contain;
-}
-
-.windGame__button.bt2 {
-  background: url(./../../img/kyluck.png) no-repeat;
-  background-position: center;
-  background-size: contain;
-}
-
-.windGame__button.bt3 {
-  background: url(./../../img/nojnic.png) no-repeat;
-  background-position: center;
-  background-size: contain;
-}
-
-.windGame__leftAndRight {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-}
-
-.windGame__left, .windGame__right {
-  justify-content: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 40%;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  color: #0f0e0f;
-}
-
-.windGame__rethult {
-  display: flex;
-  height: 70px;
-  width: 70px;
-}
-
-.windGame__h {
-  display: flex;
-  height: 70px;
-  width: 70px;
-  background: url(./../../img/hand.png) no-repeat;
-  background-position: center;
-  background-size: contain;
-}
-
-.windGame__k {
-  display: flex;
-  height: 70px;
-  width: 70px;
-  background: url(./../../img/kyluck.png) no-repeat;
-  background-position: center;
-  background-size: contain;
-}
-
-.windGame__n {
-  display: flex;
-  height: 70px;
-  width: 70px;
-  background: url(./../../img/nojnic.png) no-repeat;
-  background-position: center;
-  background-size: contain;
-}
-
-.windGame__itog {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 22px;
-  font-weight: 600;
-  color: #e60a0a;
 }

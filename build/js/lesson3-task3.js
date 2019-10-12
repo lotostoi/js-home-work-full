@@ -1,101 +1,130 @@
-let d = document;
-let you = []
-let computer = []
+function createGal() {
 
+    var link = './build/img/1'
+    var numberFotoOll = 20
+    var numberFoto = 10
+    let arrLink = []
+    let arrOut = []
+    let d = document
+    let index = 3
+    let elArr = []
+    let countt = 0
+    let countT = 0
+    let length = 10
+    let lengthBace = 20
+    let x = 0
 
-let obj = {
-    vall: ['бумага', 'камень', 'ножници'],
-    rndVal: function () {
-        text = ''
-        min = 1;
-        max = 4;
-        rndV = Math.floor(Math.random() * (max - min)) + min; //Максимум не включается, минимум включается
-        for (let i = 0; i < this.vall.length; i++) {
-            if ((i + 1) == rndV) {
-                return this.vall[i]
-            }
+    contDinPage.className = 'PageGall'
 
+    for (let i = 0; i < numberFotoOll; i++) {
+        arrOut.push(`${link}${i+1}.jpg`)
+    }
+    for (let i = 0; i < numberFoto; i++) {
+        arrLink.push(`${link}${i+1}.jpg`)
+    }
+
+    function creatArr(workArr, iff) {
+        if (iff === 0) {
+            return workArr
+        }
+
+        if (iff === 2) {
+            workArr.unshift(workArr.pop())
+            return workArr
+        }
+
+        if (iff === 1) {
+            workArr.push(workArr.shift())
+            return workArr
         }
     }
-}
 
-
-
-
-
-
-
-function funClikB() {
-    you = obj.vall[0]
-    computer = obj.rndVal()
-    if ((you === computer) && (you === obj.vall[0])) {
-        d.getElementById('left').className = 'windGame__h'
-        d.getElementById('right').className = 'windGame__h'
-
-        d.getElementById('itog').innerHTML = "Ничья!"
+    let mas = []
+    mas = creatArr(arrOut, 0)
+    for (let i = 0; i < numberFoto; i++) {
+        arrLink[i] = mas[i]
     }
 
-    if ((you === "бумага") && (computer === "камень")) {
-        d.getElementById('left').className = 'windGame__h'
-        d.getElementById('right').className = 'windGame__k'
-        d.getElementById('itog').innerHTML = "Ты выиграл!"
+    // создаем страницу галереи
+    contDinPage.innerHTML = ` 
+    <h1 class="PageGall__h1"> Галерея </h1>
+    <img src="${arrLink[index]}" alt="mainImg" class="PageGall__mainImg">
+    <div class="PageGall__contImgmin"></div>`
 
-    }
-    if ((you === "бумага") && (computer === "ножници")) {
-        d.getElementById('left').className = 'windGame__h'
-        d.getElementById('right').className = 'windGame__n'
-        d.getElementById('itog').innerHTML = "Ты проиграл!"
-
-
-    }
-}
-
-function funClikK() {
-    console.log(111)
-    you = obj.vall[1]
-    computer = obj.rndVal()
-
-    if ((you === computer) && (you === obj.vall[1])) {
-        d.getElementById('left').className = 'windGame__k'
-        d.getElementById('right').className = 'windGame__k'
-        d.getElementById('itog').innerHTML = "Ничья!"
+    function createSlide(count) { // функция создания ленты слайдера html
+        d.querySelector('.PageGall__contImgmin').innerHTML = `<button class="PageGall__button"  id="1">0</button>`
+        for (let i = 0; i < count; i++) {
+            d.querySelector('.PageGall__contImgmin').innerHTML += `<img src="${arrLink[i]}" width="50px" alt="1" class="PageGall__Img">`
+        }
+        d.querySelector('.PageGall__contImgmin').innerHTML += `<button class="PageGall__button"  id="2">0</button>`
     }
 
-    if ((you === "камень") && (computer === "ножници")) {
-        d.getElementById('left').className = 'windGame__k'
-        d.getElementById('right').className = 'windGame__n'
-        d.getElementById('itog').innerHTML = "Ты выиграл!"
+    createSlide(numberFoto) //  вызов функции создания ленты слайдера
 
+    function createWorkImg() {
+        let colImg = d.querySelectorAll('.PageGall__Img') // массив изображений слайдера
+        d.querySelectorAll('.PageGall__Img')[index].className="PageGall__ImgH"
+        colImg.forEach((el, i) => {        
+            colImg[i].setAttribute('id', `${i+1}`) // добавлем id изображениям слайдера
+            colImg[i].addEventListener('mouseover', workClickG) // добавляем обработчки изображений слайдера  
+            //   colImg[i].addEventListener('mouseout', workHoverOut) // добавляем обработчки изображений слайдера  
+        })
     }
-    if ((you === "камень") && (computer === "бумага")) {
-        d.getElementById('left').className = 'windGame__k'
-        d.getElementById('right').className = 'windGame__h'
-        d.getElementById('itog').innerHTML = "Ты проиграл!"
+
+    createWorkImg()
+
+    function workClickG() { // обработка наведений на изображение слайдера
+        index = event.target.id - 1
+        let obj = event.target
+        d.querySelector('.PageGall__mainImg').src = arrLink[index]
+       
+        let hImg = d.querySelector('.PageGall__ImgH')
+       
+      
+        hImg.className ='PageGall__Img'
+        
+        
+        obj.className = "PageGall__ImgH"
+        console.log(index)
 
     }
 
-}
 
-function funClikN() {
 
-    you = obj.vall[2]
-    computer = obj.rndVal()
+    function createWorkButton() {
 
-    if ((you === computer) && (you === obj.vall[2])) {
-        d.getElementById('left').className = 'windGame__n'
-        d.getElementById('right').className = 'windGame__n'
-        d.getElementById('itog').innerHTML = "Ничья!"
+        let buttons = d.querySelectorAll('.PageGall__button')
+
+        buttons.forEach((el, i) => {
+            buttons[i].addEventListener('click', buttonsSlide)
+        })
     }
 
-    if ((you === "ножници") && (computer === "бумага")) {
-        d.getElementById('left').className = 'windGame__n'
-        d.getElementById('right').className = 'windGame__h'
-        d.getElementById('itog').innerHTML = "Ты выиграл!"
+    createWorkButton()
 
+
+
+    function buttonsSlide() {
+        let mass = []
+        butt = +event.target.id
+        mass = creatArr(arrOut, butt)
+        for (let i = 0; i < numberFoto; i++) {
+            arrLink[i] = mass[i]
+        }
+        contDinPage.innerHTML = ` 
+                <h1 class="PageGall__h1"> Галерея </h1>
+                <img src="${arrLink[index]}" alt="mainImg" class="PageGall__mainImg">
+                <div class="PageGall__contImgmin"></div>`
+
+        createSlide(numberFoto)
+        createWorkImg()
+        let hImg = d.querySelector('.PageGall__ImgH')
+        hImg.className ='PageGall__Img'
+     //   workClickG()
+        d.querySelectorAll('.PageGall__Img')[index].className = "PageGall__ImgH"
+        createWorkButton()
+        console.log(index)
     }
-    if ((you === "ножници") && (computer === "камень")) {
-        d.getElementById('left').className = 'windGame__n'
-        d.getElementById('right').className = 'windGame__k'
-        d.getElementById('itog').innerHTML = "Ты проиграл!"
-    }
+
+
 }

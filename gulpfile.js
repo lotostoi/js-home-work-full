@@ -33,6 +33,10 @@ function GitSCSS () {
     return gulp.src('./src/scss/**/*.scss')
         .pipe(gulp.dest('./ForGithub/build/scss'));
 }
+function img () {
+    return gulp.src('./src/img/*')
+        .pipe(gulp.dest('./build/img/'));
+}
 
 
 function styles() {
@@ -96,7 +100,7 @@ gulp.task('styles', styles);
 gulp.task('scripts', scripts);
 gulp.task('watch', watch);
 gulp.task('scss', scss);
-gulp.task('build', gulp.series(clean, gulp.parallel(styles, scripts, scss)));
+gulp.task('build', gulp.series(clean, gulp.parallel(styles, scripts, scss, img)));
 gulp.task ('dev', gulp.series('build', 'watch'));   
 
 
@@ -104,5 +108,6 @@ gulp.task('GitHtml', GitHtml);
 gulp.task('GitCSS', GitCSS);
 gulp.task('GitJS', GitJS);
 gulp.task('GitSCSS', GitSCSS);
+gulp.task('img', img);
 
 gulp.task('Git', gulp.series(cleanGit,GitHtml,GitCSS,GitJS,GitSCSS));

@@ -9,11 +9,13 @@ listA.forEach((el, i) => {
 function workLink() {
     let par = event.target
     switch (+par.id) {
-        case 1: console.log('галерея')
+        case 1: creatMainPage()
             break;
-        case 2: createPageCart()
+        case 2: createGal() 
             break;
-        case 3: console.log('шахмоты')
+        case 3: createPageCart()
+            break;
+        case 4: console.log('шахмоты')
             break;
 
     }
@@ -22,25 +24,14 @@ function workLink() {
 let contDinPage = d.querySelector('.dinamikPage')
 
 function createPageCart() {
-    contDinPage.innerHTML ='\
-           <div class="headerCart">\
-            <h1 class="headerCart__h1">Задание: Работа над корзиной! </h1>\
-            <div class="contCorz">\
-                <input type="checkbox" id="cart" class="contCorz__input">\
-                    <label for="cart" class="contCorz__label" onclick="cartOpen()">\
-                        <div class="contCorz__img"></div>\
-                    </label>\
-                    <div class="contCorz__contProduct" id="Cartt">\
-                        <div class="productCart"></div>\
-                        <div class="contCorz__summAndQuently">\
-                            <span class="contCorz__text">Итого</span>\
-                            <span class="contCorz__summ" id="sum">0</span>\
-                            <span class="contCorz__quently" id="quently">0</span></div>\
-                        <button class="contCorz__button" onclick="clean()" id="buttonCart">Корзина пуста</button>\
-                    </div>\
-                    <div class="contCorz__count" id="idcount">0</div>\
-                    <div class="contCorz__ollSum" id="idSum">0</div>\
-                </div>\
-            </div>\
-            <div class="pageShop"></div>'
+    cart()
+    listA[0].removeAttribute('style','color:red')
+    listA[2].setAttribute('style','color:red')
+}
+
+function creatMainPage(){
+    contDinPage.className='dinamikPage'
+    contDinPage.innerHTML =''
+    listA[0].setAttribute('style','color:red')
+    listA[2].removeAttribute('style','color:red')
 }

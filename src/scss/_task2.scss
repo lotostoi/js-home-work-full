@@ -1,5 +1,7 @@
 
 .headerCart {
+    max-width: 1200px;
+    width: 100%;
     display: flex;
     padding: 1% 5%;
     background-color: #000000;
@@ -13,20 +15,11 @@
     }
 }
 
-.pageShop {
-    margin: 135px 0 20px;
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    border: 1px solid #c5c1c1;
-    justify-content: space-around;
-    background-color: lavenderblush;
-}
 
 .contCorz {
     display: flex;
     justify-content: flex-end;
-    margin: 20px 20px 20px;
+   // margin: 20px 20px 20px;
     position: relative;
 
     &__label {

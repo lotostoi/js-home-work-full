@@ -1,135 +1,93 @@
-.contenerGame {
-  padding: 2% 10% 5% 10%;
+.PageGall {
+  flex: 1 0 auto;
+  margin: 52px 0 0;
   display: flex;
-  flex-direction: column;
-  max-width: 1100px;
-  margin: 0 auto;
-  background-color: lightgray;
-  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  width: 100%;
   justify-content: center;
-  border-radius: 30px;
-  box-sizing: border-box;
-  &__mainpage {
-    display: flex;
-    width: 80%;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
-    color: deeppink;
-    text-align: left;
-  }
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(224, 220, 220);
+  box-sizing: content-box;
+
   &__h1 {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    width: 80%;
-    margin: 1% auto 0;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 20px;
-    color: rgb(12, 12, 12);
-    font-style: italic;
-    justify-content: center;
-  }
-  &__gameDiscription{
-    display: flex;
-    width: 80%;
-    margin: 1% auto 0;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 19px;
-    color: rgb(12, 12, 12);
-    font-style: italic;
-    justify-content: center;
-    color: red;
+    font-size: 30px;
+    color: black;
   }
 
-}
-.windGame{
+  &__mainImg {
+    display: block;
+    width: 800px;
+    height: 450px;
+  }
+
+  &__contImgmin {
+    margin: 20px 0 20px 0;
     display: flex;
-    width: 100%;
-    flex-direction: column;
     align-items: center;
-    &__contButton{
-        display: flex;
-        width: 100%;
-        justify-content: center;
-    }
-    &__button {
-        margin: 10px;
-        height: 70px;
-        width: 70px;
-        font-size: 0;
-    }
-    &__button.bt1 {
-        background: url(./../../img/hand.png) no-repeat;
-        background-position: center;
-        background-size: contain;
- 
-    }
-    &__button.bt2 {
-        background: url(./../../img/kyluck.png) no-repeat;
-        background-position: center;
-        background-size: contain;
-    }
-    &__button.bt3 {
-        background: url(./../../img/nojnic.png) no-repeat;
-        background-position: center;
-        background-size: contain;
-    }
+    justify-content: cente;
+  }
 
-    &__leftAndRight{
-        display: flex;
-        width: 100%;
-        justify-content: center;
-    }
-    &__left,
-    &__right {
-        justify-content: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 40%;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 16px;
-        font-weight: 600;
-        color: rgb(15, 14, 15);
-    }
-    &__rethult{
-        display: flex;
-        height: 70px;
-        width: 70px;
-       
-    }
-    &__h{
-        display: flex;
-        height: 70px;
-        width: 70px;
-        background: url(./../../img/hand.png) no-repeat;
-        background-position: center;
-        background-size: contain;
-    }
-    &__k{
-        display: flex;
-        height: 70px;
-        width: 70px;
-        background: url(./../../img/kyluck.png) no-repeat;
-        background-position: center;
-        background-size: contain;
-    }
-    &__n{
-        display: flex;
-        height: 70px;
-        width: 70px;
-        background: url(./../../img/nojnic.png) no-repeat;
-        background-position: center;
-        background-size: contain;
-    }
-    &__itog { 
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 22px;
-        font-weight: 600;
-        color: rgb(230, 10, 10); 
-    }
+  &__Img {
+    border-radius: 5px;
+    margin: 0 2px;
+    width: 100px;
+    height: 60px;
+    transition: transform 200ms linear;
 
-  
+ /*    &:hover {
+      transform: scale(1.3);
+    } */
+  }
 
+  &__ImgH {
+    border-radius: 5px;
+    margin: 0 2px;
+    width: 100px;
+    height: 60px;
+    transition: transform 200ms linear;
+    transform: scale(1.3);
+  }
+
+
+  &__button:first-child {
+    display: flex;
+    margin: 0 2px;
+    width: 40px;
+    height: 58px;
+    border-right: 32px solid #946844;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-left: none;
+    font-size: 0;
+    outline: none;
+
+    &:hover {
+      border-right: 32px solid rgb(148, 68, 144);
+      border-top: 25px solid transparent;
+      border-bottom: 25px solid transparent;
+      border-left: none;
+    }
+  }
+
+  &__button:last-child {
+    display: flex;
+    margin: 0 2px;
+    width: 40px;
+    height: 58px;
+    border-right: none;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-left: 32px solid rgb(148, 104, 68);
+    font-size: 0;
+    outline: none;
+
+    &:hover {
+      border-right: none;
+      border-top: 25px solid transparent;
+      border-bottom: 25px solid transparent;
+      border-left: 32px solid rgb(148, 68, 144);
+    }
+  }
 }
-

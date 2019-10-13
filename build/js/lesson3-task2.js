@@ -1,6 +1,6 @@
 function cart() {
 
-   
+
     let linkPref = "./build/img/phon"
     const NAMES = ['5.9" Смартфон Samsung Galaxy A40 64 ГБ белый', '5.9" Смартфон Samsung Galaxy A40 64 ГБ красный', '5.9" Смартфон Samsung Galaxy A40 64 ГБ синий', '5.9" Смартфон Samsung Galaxy A40 64 ГБ черный', '6.4" Смартфон Samsung Galaxy A50 128 ГБ белый', '6.4" Смартфон Samsung Galaxy A50 128 ГБ синий', '6.4" Смартфон Samsung Galaxy A50 128 ГБ черный', '6.7" Смартфон Samsung Galaxy A70 128 ГБ белый', '6.7" Смартфон Samsung Galaxy A70 128 ГБ синий', '6.7" Смартфон Samsung Galaxy A80 128 ГБ золотистый', '6.7" Смартфон Samsung Galaxy A80 128 ГБ серебристый']
     const PRISE = [10000, 12000, 13000, 18000, 25000, 25000, 30000, 30000, 35000, 60000, 61000]
@@ -18,12 +18,12 @@ function cart() {
     let classPriseCart = 'contCorz__product__priseCart' // css class PriseCart
     let classQuentlyCart = 'contCorz__product__quentlyCart' // css class PriseCart
     let classButton = 'product__button' // css class button
-    let classButtonActiv = " product__button-activ" //css class activ
+    let classButtonActiv = "product__button-activ" //css class activ
     let f = 1
 
     LINK.forEach((e, i) => LINK[i] = linkPref + (i + 1) + '.jpg')
 
-   
+
 
     let shop = { //   создаем обЪект магазина 
         cotalog: [],
@@ -116,41 +116,21 @@ function cart() {
         </div>
         <div class="contProduct"></div>`
 
-
-
-
-
-
     shop.buildAarr() // создаем  массив магазина
 
-    function addElltoProduct(nameParent, typeEl, classEl, valueEl, linkEl, idEl) { //функция создания тега в теге nameParent
-        let nameEl = d.createElement(typeEl) // синтаксис addElltoProduct(arg,'arg',arg,arg,arg,arg)
-        if (classEl != 'none') {
-            nameEl.className = classEl
-        }
-        if (valueEl != 'none') {
-            nameEl.innerHTML = valueEl
-        }
-        if (linkEl != 'none') {
-            nameEl.src = linkEl
-        }
-        if (idEl != 'none') {
-            nameEl.id = idEl
-        }
-        nameParent.appendChild(nameEl)
-    }
 
     function createProduct(i) { //  функция создания карточки товара на странице html
 
-        let contShop = d.getElementsByClassName('contProduct')[0]
-        let div = document.createElement('div');
-        div.className = "product"
-        contShop.appendChild(div)
+        let contShop = d.querySelector('.contProduct')
 
-        addElltoProduct(div, 'img', classImg, 'none', shop.cotalog[i].link, 'none')
-        addElltoProduct(div, 'h4', varClassName, shop.cotalog[i].name, 'none', 'none')
-        addElltoProduct(div, 'span', classPrise, shop.cotalog[i].prise + ' руб', 'none', 'none')
-        addElltoProduct(div, 'button', classButton, 'в корзину', 'none', shop.cotalog[i].id)
+        contShop.innerHTML += `
+        <div class="product">
+            <img src="${shop.cotalog[i].link}" alt="" class="${classImg}">
+            <h4 class="${varClassName}">${shop.cotalog[i].name}</h4>
+            <span class="${classPrise}">${shop.cotalog[i].prise} руб</span>
+            <button class="${classButton}" id='${shop.cotalog[i].id}'> в корзину </button>
+        </div>`
+
     }
 
 
@@ -160,42 +140,69 @@ function cart() {
         }
     }
 
- inputProduct(DATABASE[1]) // выводим карточки товара в HTML
+    inputProduct([1,1,1,1,1,1,0]) // выводим карточки товара в HTML
 
-    let buttons = d.getElementsByClassName(classButton) // достаем массив объектов кнопок
-    for (let i = 0; i < buttons.length; i++) { // вешаем на кнопки обработчик
-        buttons[i].addEventListener('click', workClike)
+
+    /* 
+        let buttons = d.getElementsByClassName(classButton) // достаем массив объектов кнопок
+        for (let i = 0; i < buttons.length; i++) { // вешаем на кнопки обработчик
+            buttons[i].addEventListener('click', workClike)
+        } */
+
+    d.querySelector('.contProduct').addEventListener('click', workClike)
+
+    function workClike(e) {
+
+
+        if ((e.target.className === classButton) || (e.target.className === classButtonActiv)) {
+            shop.addObgToCard(e.target.id) // добавляем товар в корзину  по id
+            e.target.className = classButtonActiv
+            e.target.innerHTML = "в корзине (" + shop.cotalog[e.target.id - 1].quentlyInCart + " шт)"
+            console.log(shop)
+            let countCat = d.getElementById('idcount') // элемент для вывода счетчика корзины
+            countCat.innerHTML = shop.quently() //выводим счетчик корзины в html
+           // inputProductInCart()
+            let valueTegButtonCart = d.getElementById('buttonCart')
+            valueTegButtonCart.innerHTML = "Очистить корзину"
+            let SumCart = d.getElementById('sum')
+            SumCart.innerHTML = shop.summCart(1) + " руб"
+            let QuentlyCart = d.getElementById('quently')
+            QuentlyCart.innerHTML = shop.quently() + " шт."
+
+        }
     }
 
 
-    function workClike() { // обработчик кликов
 
-        let per = this.parentNode // получаем родительский элемент
-        shop.addObgToCard(per.childNodes[3].id) // добавляем товар в корзину  по id
-        let valieId = per.childNodes[3].id - 1 // создаем перменную кликнутого id
-        arrId[valieId] == 0 ? arrId[valieId] = 1 : arrId[valieId]++ // считаем клики id
-        per.childNodes[3].className = classButtonActiv // добавляем класс для нажатой кнопки 
-        per.childNodes[3].innerHTML = " в корзине (" + arrId[valieId] + " шт)" //меняем надпись на кнопке
-        let countCat = d.getElementById('idcount') // элемент для вывода счетчика корзины
-        let sCart = d.getElementById('idSum') // элемент для вывода сумы корзины
-        countCat.innerHTML = shop.quently() //выводим счетчик корзины в html
-        console.log(shop.quently)
-        sCart.innerHTML = shop.summCart(1) + 'руб' //выводим суму корзины в html 
-        inputProductInCart()
-        let valueTegButtonCart = d.getElementById('buttonCart')
-        valueTegButtonCart.innerHTML = "Очистить корзину"
-        let SumCart = d.getElementById('sum')
-        SumCart.innerHTML = shop.summCart(1) + " руб"
-        let QuentlyCart = d.getElementById('quently')
-        QuentlyCart.innerHTML = shop.quently() + " шт."
-    }
 
+    /* 
+        function workClike() { // обработчик кликов
+
+            let per = this.parentNode // получаем родительский элемент
+            shop.addObgToCard(per.childNodes[3].id) // добавляем товар в корзину  по id
+            let valieId = per.childNodes[3].id - 1 // создаем перменную кликнутого id
+            arrId[valieId] == 0 ? arrId[valieId] = 1 : arrId[valieId]++ // считаем клики id
+            //per.childNodes[3].className = classButtonActiv // добавляем класс для нажатой кнопки 
+            per.childNodes[3].innerHTML = " в корзине (" + arrId[valieId] + " шт)" //меняем надпись на кнопке
+            let countCat = d.getElementById('idcount') // элемент для вывода счетчика корзины
+            let sCart = d.getElementById('idSum') // элемент для вывода сумы корзины
+            countCat.innerHTML = shop.quently() //выводим счетчик корзины в html
+            sCart.innerHTML = shop.summCart(1) + 'руб' //выводим суму корзины в html 
+            inputProductInCart()
+            let valueTegButtonCart = d.getElementById('buttonCart')
+            valueTegButtonCart.innerHTML = "Очистить корзину"
+            let SumCart = d.getElementById('sum')
+            SumCart.innerHTML = shop.summCart(1) + " руб"
+            let QuentlyCart = d.getElementById('quently')
+            QuentlyCart.innerHTML = shop.quently() + " шт."
+        }
+     */
 
     function createCartProduct(i) { //  функция создания карточки товара в корзине
         let contShop = d.getElementsByClassName('productCart')[0]
         let div = document.createElement('div');
         div.className = "contCorz__product"
-        contShop.appendChild(div)
+      /*   contShop.appendChild(div)
         let contImg = document.createElement('div');
         contImg.className = "contCorz__contImg"
         div.appendChild(contImg)
@@ -203,6 +210,7 @@ function cart() {
         addElltoProduct(div, 'h4', varClassNameCart, shop.cart[i].name, 'none', 'none')
         addElltoProduct(div, 'span', classPriseCart, shop.cart[i].prise + ' руб', 'none', 'none')
         addElltoProduct(div, 'span', classQuentlyCart, shop.cart[i].quentlyInCart + ' шт.', 'none', 'none')
+        console.log('dfdddddddddddddddddddd') */
     }
 
     function inputProductInCart() { // функция вывода карточек товара в корзину
@@ -252,5 +260,5 @@ function cart() {
             $('#Cartt').slideUp(400);
             f = 1
         }
-    }  
+    }
 }

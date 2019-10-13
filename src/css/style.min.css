@@ -12,7 +12,7 @@ body {
   background-color: white;
   align-items: center;
   font-size: 16px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .header {
@@ -39,30 +39,48 @@ body {
   align-items: center;
 }
 
-.header__li {
+.header__a {
   display: flex;
   font-size: 17px;
   color: #bae7eb;
-  margin: 0 10px;
+  margin: 16px 10px;
+  text-decoration: none;
   cursor: pointer;
 }
 
-.header__li:hover {
+.header__a:hover {
   color: #e4e677;
 }
 
+.header__a:active {
+  color: #e68477;
+}
+
+.header__a:focus {
+  color: #f12308;
+}
+
 .dinamikPage {
+  margin-top: 52px;
   flex: 1 0 auto;
   display: flex;
   max-width: 1200px;
   width: 100%;
   flex-direction: column;
-  background: url(./../img/fon.jpg) center;
+  background: url(./../img/fon4.jpg) center;
   background-size: cover;
 }
 
+.footer {
+  margin-top: 1px;
+  width: 100%;
+  display: flex;
+  flex: 0 0 auto;
+  height: 40px;
+  background-color: black;
+}
+
 .dinamikPage_Cart {
-  flex: 1 0 auto;
   margin: 52px 0 20px;
   display: flex;
   flex-wrap: wrap;
@@ -73,22 +91,14 @@ body {
   box-sizing: content-box;
 }
 
-.footer {
-  width: 100%;
-  display: flex;
-  flex: 0 0 auto;
-  height: 40px;
-  background-color: black;
-}
-
 .headerCart {
-  max-width: 1200px;
   width: 100%;
   display: flex;
   padding: 1% 5%;
   background-color: #000000;
   justify-content: space-between;
   align-items: center;
+  box-sizing: border-box;
 }
 
 .headerCart__h1 {
@@ -109,7 +119,7 @@ body {
   position: absolute;
   z-index: 50;
   top: 3px;
-  right: -78px;
+  right: -55px;
   width: 350px;
   padding: 10px 70px 10px 0;
 }
@@ -152,7 +162,7 @@ body {
   border-radius: 0 0 3px 3px;
   padding: 10px;
   top: 71px;
-  right: -78px;
+  right: -55px;
 }
 
 .contCorz__contImg {
@@ -324,11 +334,12 @@ body {
   width: 30%;
   border: 1px solid #d1c8c8;
   border-radius: 3px;
-  margin: 5px;
+  margin: 5px 0;
   align-items: center;
   background-color: #ffffff;
   padding: 5px;
   justify-content: space-between;
+  box-sizing: border-box;
 }
 
 .product__img {
@@ -355,7 +366,7 @@ body {
   min-height: 35px;
   border: none;
   outline: none;
-  transition: background-color 100ms linear,  color 100ms linear, width 200ms linear;
+  transition: background-color 100ms linear, color 100ms linear, width 200ms linear;
 }
 
 .product__button:hover {
@@ -389,8 +400,23 @@ body {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  background-color: #e0dcdc;
   box-sizing: content-box;
+  position: relative;
+  z-index: 500;
+}
+
+.PageGall::before {
+  content: '';
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url(./../img/fon4.jpg) center;
+  background-size: cover;
+  opacity: 0.4;
+  left: 0;
+  top: 0;
+  z-index: -20;
 }
 
 .PageGall__h1 {
@@ -399,6 +425,7 @@ body {
 }
 
 .PageGall__mainImg {
+  border-radius: 3px;
   display: block;
   width: 800px;
   height: 450px;
@@ -408,7 +435,7 @@ body {
   margin: 20px 0 20px 0;
   display: flex;
   align-items: center;
-  justify-content: cente;
+  justify-content: center;
 }
 
 .PageGall__Img {
@@ -417,9 +444,6 @@ body {
   width: 100px;
   height: 60px;
   transition: transform 200ms linear;
-  /*    &:hover {
-      transform: scale(1.3);
-    } */
 }
 
 .PageGall__ImgH {
@@ -428,15 +452,16 @@ body {
   width: 100px;
   height: 60px;
   transition: transform 200ms linear;
-  transform: scale(1.3);
+  transform: scale(1.2);
 }
 
 .PageGall__button:first-child {
+  background-color: transparent;
   display: flex;
-  margin: 0 2px;
+  margin: 0 10px;
   width: 40px;
-  height: 58px;
-  border-right: 32px solid #946844;
+  height: 49px;
+  border-right: 32px solid #000000;
   border-top: 25px solid transparent;
   border-bottom: 25px solid transparent;
   border-left: none;
@@ -445,21 +470,22 @@ body {
 }
 
 .PageGall__button:first-child:hover {
-  border-right: 32px solid #944490;
+  border-right: 32px solid #253664;
   border-top: 25px solid transparent;
   border-bottom: 25px solid transparent;
   border-left: none;
 }
 
 .PageGall__button:last-child {
+  background-color: transparent;
   display: flex;
-  margin: 0 2px;
+  margin: 0 10px;
   width: 40px;
-  height: 58px;
+  height: 49px;
   border-right: none;
   border-top: 25px solid transparent;
   border-bottom: 25px solid transparent;
-  border-left: 32px solid #946844;
+  border-left: 32px solid black;
   font-size: 0;
   outline: none;
 }
@@ -468,5 +494,5 @@ body {
   border-right: none;
   border-top: 25px solid transparent;
   border-bottom: 25px solid transparent;
-  border-left: 32px solid #944490;
+  border-left: 32px solid #253664;
 }

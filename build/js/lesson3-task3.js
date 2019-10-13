@@ -7,12 +7,9 @@ function createGal() {
     let arrOut = []
     let d = document
     let index = 3
-    let elArr = []
-    let countt = 0
-    let countT = 0
-    let length = 10
-    let lengthBace = 20
-    let x = 0
+ 
+
+  /*   let contDinPage = d.querySelector('.dinamikPage') */
 
     contDinPage.className = 'PageGall'
 
@@ -63,8 +60,8 @@ function createGal() {
 
     function createWorkImg() {
         let colImg = d.querySelectorAll('.PageGall__Img') // массив изображений слайдера
-        d.querySelectorAll('.PageGall__Img')[index].className="PageGall__ImgH"
-        colImg.forEach((el, i) => {        
+        d.querySelectorAll('.PageGall__Img')[index].className = "PageGall__ImgH"
+        colImg.forEach((el, i) => {
             colImg[i].setAttribute('id', `${i+1}`) // добавлем id изображениям слайдера
             colImg[i].addEventListener('mouseover', workClickG) // добавляем обработчки изображений слайдера  
             //   colImg[i].addEventListener('mouseout', workHoverOut) // добавляем обработчки изображений слайдера  
@@ -77,19 +74,17 @@ function createGal() {
         index = event.target.id - 1
         let obj = event.target
         d.querySelector('.PageGall__mainImg').src = arrLink[index]
-       
+
         let hImg = d.querySelector('.PageGall__ImgH')
-       
-      
-        hImg.className ='PageGall__Img'
-        
-        
+
+
+        hImg.className = 'PageGall__Img'
+
+
         obj.className = "PageGall__ImgH"
         console.log(index)
 
     }
-
-
 
     function createWorkButton() {
 
@@ -101,8 +96,6 @@ function createGal() {
     }
 
     createWorkButton()
-
-
 
     function buttonsSlide() {
         let mass = []
@@ -119,12 +112,8 @@ function createGal() {
         createSlide(numberFoto)
         createWorkImg()
         let hImg = d.querySelector('.PageGall__ImgH')
-        hImg.className ='PageGall__Img'
-     //   workClickG()
+        hImg.className = 'PageGall__Img'
         d.querySelectorAll('.PageGall__Img')[index].className = "PageGall__ImgH"
         createWorkButton()
-        console.log(index)
     }
-
-
 }

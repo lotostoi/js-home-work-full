@@ -1,6 +1,6 @@
 function cart() {
 
-
+   
     let linkPref = "./build/img/phon"
     const NAMES = ['5.9" Смартфон Samsung Galaxy A40 64 ГБ белый', '5.9" Смартфон Samsung Galaxy A40 64 ГБ красный', '5.9" Смартфон Samsung Galaxy A40 64 ГБ синий', '5.9" Смартфон Samsung Galaxy A40 64 ГБ черный', '6.4" Смартфон Samsung Galaxy A50 128 ГБ белый', '6.4" Смартфон Samsung Galaxy A50 128 ГБ синий', '6.4" Смартфон Samsung Galaxy A50 128 ГБ черный', '6.7" Смартфон Samsung Galaxy A70 128 ГБ белый', '6.7" Смартфон Samsung Galaxy A70 128 ГБ синий', '6.7" Смартфон Samsung Galaxy A80 128 ГБ золотистый', '6.7" Смартфон Samsung Galaxy A80 128 ГБ серебристый']
     const PRISE = [10000, 12000, 13000, 18000, 25000, 25000, 30000, 30000, 35000, 60000, 61000]
@@ -23,7 +23,7 @@ function cart() {
 
     LINK.forEach((e, i) => LINK[i] = linkPref + (i + 1) + '.jpg')
 
-    let d = document;
+   
 
     let shop = { //   создаем обЪект магазина 
         cotalog: [],
@@ -159,9 +159,9 @@ function cart() {
         }
     }
 
-    inputProduct(DATABASE[1]) // выводим карточки товара в HTML
+ inputProduct(DATABASE[1]) // выводим карточки товара в HTML
 
-    /* let buttons = d.getElementsByClassName(classButton) // достаем массив объектов кнопок
+    let buttons = d.getElementsByClassName(classButton) // достаем массив объектов кнопок
     for (let i = 0; i < buttons.length; i++) { // вешаем на кнопки обработчик
         buttons[i].addEventListener('click', workClike)
     }
@@ -251,5 +251,5 @@ function cart() {
             $('#Cartt').slideUp(400);
             f = 1
         }
-    }  */
+    }  
 }

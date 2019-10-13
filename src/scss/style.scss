@@ -11,9 +11,8 @@ body {
   flex-direction: column;
   background-color: white;
   align-items: center;
-  //box-sizing: border-box;
   font-size: 16px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
 }
 
 .header {
@@ -39,42 +38,41 @@ body {
     align-items: center;
   }
 
-  &__li {
+  &__a {
     display: flex;
     font-size: 17px;
     color: #bae7eb;
-    margin: 0 10px;
+    margin: 16px 10px;
+    text-decoration: none;
+
     cursor: pointer;
     &:hover {
       color: rgb(228, 230, 119);
+    }
+    &:active {
+      color: rgb(230, 132, 119);
+    }
+    &:focus {
+      color: rgb(241, 35, 8);
     }
   }
 }
 
 .dinamikPage {
+  margin-top: 52px;
   flex: 1 0 auto;
   display: flex;
   max-width: 1200px;
   width: 100%;
   flex-direction: column;
-  background: url(./../img/fon.jpg) center;
+  background: url(./../img/fon4.jpg) center;
   background-size: cover;
 }
 
-.dinamikPage_Cart {
-  flex: 1 0 auto;
-  margin: 52px 0 20px;
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 1200px;
-  width: 100%;
-  //border: 1px solid #c5c1c1;
-  justify-content: space-around;
-  background-color: lavenderblush;
-  box-sizing: content-box;
-}
+
 
 .footer {
+  margin-top: 1px;
   width: 100%;
   display: flex;
   flex: 0 0 auto;

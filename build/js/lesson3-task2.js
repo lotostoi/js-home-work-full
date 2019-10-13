@@ -94,26 +94,27 @@ function cart() {
     }
 
     contDinPage.className = 'dinamikPage_Cart'
-    contDinPage.innerHTML = '\
-       <div class="headerCart">\
-        <h1 class="headerCart__h1">Задание: Работа над корзиной! </h1>\
-        <div class="contCorz">\
-            <input type="checkbox" id="cart" class="contCorz__input">\
-                <label for="cart" class="contCorz__label" onclick="cartOpen()">\
-                    <div class="contCorz__img"></div>\
-                </label>\
-                <div class="contCorz__contProduct" id="Cartt">\
-                    <div class="productCart"></div>\
-                    <div class="contCorz__summAndQuently">\
-                        <span class="contCorz__text">Итого</span>\
-                        <span class="contCorz__summ" id="sum">0</span>\
-                        <span class="contCorz__quently" id="quently">0</span></div>\
-                    <button class="contCorz__button" onclick="clean()" id="buttonCart">Корзина пуста</button>\
-                </div>\
-                <div class="contCorz__count" id="idcount">0</div>\
-                <div class="contCorz__ollSum" id="idSum">0</div>\
-            </div>\
-        </div>'
+    contDinPage.innerHTML = `
+       <div class="headerCart">
+        <h1 class="headerCart__h1">Задание: Работа над корзиной! </h1>
+        <div class="contCorz">
+            <input type="checkbox" id="cart" class="contCorz__input">
+                <label for="cart" class="contCorz__label" onclick="cartOpen()">
+                    <div class="contCorz__img"></div>
+                </label>
+                <div class="contCorz__contProduct" id="Cartt">
+                    <div class="productCart"></div>
+                    <div class="contCorz__summAndQuently">
+                        <span class="contCorz__text">Итого</span>
+                        <span class="contCorz__summ" id="sum">0</span>
+                        <span class="contCorz__quently" id="quently">0</span></div>
+                    <button class="contCorz__button" onclick="clean()" id="buttonCart">Корзина пуста</button>
+                </div>
+                <div class="contCorz__count" id="idcount">0</div>
+                <div class="contCorz__ollSum" id="idSum">0</div>
+            </div>
+        </div>
+        <div class="contProduct"></div>`
 
 
 
@@ -141,7 +142,7 @@ function cart() {
 
     function createProduct(i) { //  функция создания карточки товара на странице html
 
-        let contShop = d.getElementsByClassName('dinamikPage_Cart')[0]
+        let contShop = d.getElementsByClassName('contProduct')[0]
         let div = document.createElement('div');
         div.className = "product"
         contShop.appendChild(div)

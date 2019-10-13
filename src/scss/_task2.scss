@@ -6,13 +6,16 @@
     flex-wrap: wrap;
     max-width: 1200px;
     width: 100%;
+    flex-direction: column;
     justify-content: space-around;
     background-color: lavenderblush;
     box-sizing: content-box;
+    align-items: center;
+    position: relative;
 }
 
 .headerCart {
-    width: 100%;
+    width: 90%;
     display: flex;
     padding: 1% 5%;
     background-color: #000000;
@@ -253,6 +256,12 @@
         }
     }
 
+}
+
+.contProduct{
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
 }
 
 .product {

@@ -27,6 +27,7 @@ body {
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
+  z-index: 100;
 }
 
 .header__h1 {
@@ -392,7 +393,7 @@ body {
   align-items: center;
   box-sizing: content-box;
   position: relative;
-  z-index: 500;
+  z-index: 50;
 }
 
 .PageGall::before {
@@ -406,7 +407,7 @@ body {
   opacity: 0.4;
   left: 0;
   top: 0;
-  z-index: -20;
+  z-index: -200;
 }
 
 .PageGall__h1 {

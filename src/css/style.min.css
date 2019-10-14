@@ -532,6 +532,8 @@ body {
   justify-content: center;
   box-sizing: border-box;
   border: 1px solid black;
+  background: url(./../img/14.jpg) center;
+  background-size: cover;
   -webkit-box-shadow: 0px -1px 47px 23px #333438;
   -moz-box-shadow: 0px -1px 47px 23px #333438;
   box-shadow: 0px -1px 47px 23px #333438;

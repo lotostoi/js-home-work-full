@@ -3,7 +3,7 @@
   margin: 52px 0 0;
   display: flex;
   flex-wrap: wrap;
-  max-width: 1200px;
+  max-width: 1400px;
   width: 100%;
   justify-content: center;
   flex-direction: column;
@@ -32,10 +32,10 @@
   }
 
   &__mainImg {
-    border-radius: 3px;
+    border-radius: 5px;
     display: block;
-    width: 800px;
-    height: 450px;
+    width: 1000px;
+    height: 600px;
   }
 
   &__contImgmin {

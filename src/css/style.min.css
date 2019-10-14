@@ -1,26 +1,29 @@
 body {
+  margin: 8px;
   height: 100vh;
 }
 
 .contener {
   display: flex;
-  margin: 0 5%;
+  margin: 0 auto;
+  max-width: 1400px;
   width: 100%;
-  min-height: 90%;
+  min-height: 100%;
   flex-direction: column;
   background-color: white;
   align-items: center;
   font-size: 16px;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  box-sizing: content-box;
 }
 
 .header {
-  max-width: 1200px;
+  max-width: 1400px;
   width: 100%;
   display: flex;
   position: fixed;
   flex: 0 0 auto;
-  background-color: black;
+  background-color: #140e0a;
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
@@ -63,7 +66,7 @@ body {
   margin-top: 52px;
   flex: 1 0 auto;
   display: flex;
-  max-width: 1200px;
+  max-width: 1400px;
   width: 100%;
   flex-direction: column;
   background: url(./../img/fon4.jpg) center;
@@ -76,29 +79,29 @@ body {
   display: flex;
   flex: 0 0 auto;
   height: 40px;
-  background-color: black;
+  background-color: #140e0a;
 }
 
 .dinamikPage_Cart {
   flex: 1 0 auto;
-  margin: 52px 0 20px;
+  margin: 52px 0 5px;
   display: flex;
   flex-wrap: wrap;
-  max-width: 1200px;
+  max-width: 1400px;
   width: 100%;
   flex-direction: column;
-  justify-content: space-around;
-  background-color: lavenderblush;
+  background-color: #dfcec2;
   box-sizing: content-box;
   align-items: center;
-  position: relative;
 }
 
 .headerCart {
-  width: 90%;
+  position: fixed;
+  max-width: 1400px;
+  width: 100%;
   display: flex;
-  padding: 1% 5%;
-  background-color: #000000;
+  padding: 0 5%;
+  background-color: #302015;
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
@@ -110,65 +113,96 @@ body {
   color: #ffffff;
 }
 
-.contCorz {
+.headerCart__iconCart {
   display: flex;
   justify-content: flex-end;
   position: relative;
 }
 
-.contCorz__label {
+.headerCart__label {
+  width: 420px;
   display: flex;
   justify-content: flex-end;
-  position: absolute;
   z-index: 50;
-  top: 3px;
-  right: -55px;
-  width: 350px;
+  border-radius: 3px;
   padding: 10px 70px 10px 0;
+  box-sizing: border-box;
 }
 
-.contCorz__input {
+.headerCart__input {
   display: none;
 }
 
-.contCorz__input:checked ~ .contCorz__contProduct {
+.headerCart__input:checked ~ .contCart {
   display: flex;
   flex-direction: column;
   padding: 10px;
   height: auto;
 }
 
-.contCorz__input:checked ~ .contCorz__label {
-  background-color: #b15ea6;
+.headerCart__input:checked ~ .headerCart__label {
+  background-color: #864e05;
 }
 
-.contCorz__input:checked ~ .contCorz__label > div {
+.headerCart__input:checked ~ .headerCart__label > div {
   background: url(./../img/rkest.png) no-repeat;
   background-position: center;
   background-size: contain;
   z-index: 100;
 }
 
-.contCorz__input:checked ~ .contCorz__count {
+.headerCart__input:checked ~ .headerCart__count {
   visibility: hidden;
 }
 
-.contCorz__input:checked ~ .contCorz__ollSum {
+.headerCart__input:checked ~ .contCorz__ollSum {
   visibility: hidden;
 }
 
-.contCorz__contProduct {
+.headerCart__img {
+  width: 50px;
+  height: 50px;
+  background: url(./../img/korzina.png) no-repeat;
+  background-position: center;
+  background-size: contain;
+  z-index: 100;
+}
+
+.headerCart__count {
+  display: flex;
+  position: absolute;
+  visibility: visible;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  top: 2px;
+  left: 319px;
+  text-align: center;
+  background-color: #ffffff;
+}
+
+.contCart {
   position: absolute;
   width: 400px;
   display: none;
-  background-color: #2a2a2a;
-  border-radius: 0 0 3px 3px;
+  background-color: #38250c;
+  border-radius: 3px;
   padding: 10px;
-  top: 71px;
-  right: -55px;
+  top: 70px;
+  right: 0;
 }
 
-.contCorz__contImg {
+.contCart__product {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #a8a0a0;
+  margin: 1px 0;
+}
+
+.contCart__product__contImg {
   display: flex;
   background-color: #ffffff;
   width: 45px;
@@ -178,35 +212,18 @@ body {
   height: 61px;
 }
 
-.contCorz__img {
-  width: 50px;
-  height: 50px;
-  background: url(./../img/korzina.png) no-repeat;
-  background-position: center;
-  background-size: contain;
-  z-index: 100;
-}
-
-.contCorz__product {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  background-color: #a8a0a0;
-  margin: 1px 0;
-}
-
-.contCorz__product__imgCart {
+.contCart__product__imgCart {
   height: 90% !important;
 }
 
-.contCorz__product__nameCart {
+.contCart__product__nameCart {
   width: 200px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
   color: #000000;
 }
 
-.contCorz__product__priseCart {
+.contCart__product__priseCart {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
   font-weight: 600;
@@ -216,7 +233,7 @@ body {
   margin-right: 5px;
 }
 
-.contCorz__product__quentlyCart {
+.contCart__product__quentlyCart {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
   font-weight: 600;
@@ -225,48 +242,7 @@ body {
   margin-right: -1px;
 }
 
-.contCorz__img:hover {
-  transform: scale(1.02);
-}
-
-.contCorz__img:active {
-  transform: scale(0.98);
-}
-
-.contCorz__count {
-  display: flex;
-  visibility: visible;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  width: 25px;
-  height: 25px;
-  margin-bottom: 30px;
-  margin-left: -10px;
-  text-align: center;
-  background-color: #ffffff;
-}
-
-.contCorz__ollSum {
-  visibility: visible;
-  position: absolute;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 0 5px;
-  height: 25px;
-  margin-top: 20px;
-  max-lines: -20px;
-  border-radius: 3px;
-  background-color: #000000;
-  color: #ffffff;
-  justify-content: center;
-  bottom: -26px;
-  left: -8px;
-  display: none;
-}
-
-.contCorz__summAndQuently {
+.sumAndQuently {
   height: 30px;
   display: flex;
   justify-content: flex-end;
@@ -275,7 +251,7 @@ body {
   margin: 1px 0;
 }
 
-.contCorz__quently {
+.sumAndQuently__quently {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
   font-weight: 600;
@@ -285,7 +261,7 @@ body {
   margin-right: 5px;
 }
 
-.contCorz__summ {
+.sumAndQuently__summ {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
   font-weight: 600;
@@ -295,7 +271,7 @@ body {
   margin-right: 5px;
 }
 
-.contCorz__text {
+.sumAndQuently__text {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
   font-weight: 600;
@@ -306,7 +282,7 @@ body {
   margin-right: 50px;
 }
 
-.contCorz__button {
+.buttonCart {
   display: flex;
   outline: none;
   border: 1px solid #a8a0a0;
@@ -322,19 +298,22 @@ body {
   transition: transform 200ms linear;
 }
 
-.contCorz__button:hover {
+.buttonCart:hover {
   background-color: #464343;
   color: white;
 }
 
-.contCorz__button:active {
+.buttonCart:active {
   transform: scale(0.9);
 }
 
 .contProduct {
   display: flex;
   flex-wrap: wrap;
-  width: 90%;
+  width: 98%;
+  justify-content: space-around;
+  padding: 5px;
+  margin-top: 70px;
 }
 
 .product {
@@ -367,11 +346,11 @@ body {
 }
 
 .product__button {
-  font-size: 16px;
+  font-size: 15px;
   font-family: Arial, Helvetica, sans-serif;
   background-color: darkgray;
   border-radius: 5px;
-  width: 35%;
+  width: 45%;
   min-height: 35px;
   border: none;
   outline: none;
@@ -379,7 +358,8 @@ body {
 }
 
 .product__button:hover {
-  background-color: palevioletred;
+  background-color: #443023;
+  color: #f5efef;
 }
 
 .product__button-activ {
@@ -390,13 +370,14 @@ body {
   outline: none;
   color: white;
   transition: background-color 100ms linear, color 100ms linear, width 200ms linear;
-  background-color: #2b2525;
-  width: 40%;
+  background-color: #664834;
+  color: #f5efef;
+  width: 47%;
 }
 
 .product__button-activ:hover {
-  background-color: palevioletred;
-  color: black;
+  background-color: #443023;
+  color: #f5efef;
 }
 
 .PageGall {
@@ -404,7 +385,7 @@ body {
   margin: 52px 0 0;
   display: flex;
   flex-wrap: wrap;
-  max-width: 1200px;
+  max-width: 1400px;
   width: 100%;
   justify-content: center;
   flex-direction: column;
@@ -434,10 +415,10 @@ body {
 }
 
 .PageGall__mainImg {
-  border-radius: 3px;
+  border-radius: 5px;
   display: block;
-  width: 800px;
-  height: 450px;
+  width: 1000px;
+  height: 600px;
 }
 
 .PageGall__contImgmin {

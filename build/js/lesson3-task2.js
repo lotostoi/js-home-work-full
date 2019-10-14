@@ -11,12 +11,12 @@ function cart() {
     let classProduct = 'product' // css class карточки товара
     let classProductCart = 'contCorz__product' // css class карточки товара
     let classImg = 'product__img' // css class img
-    let classImgCart = 'contCorz__product__imgCart' // css class img
+    let classImgCart = 'contCart__product__imgCart' // css class img
     let varClassName = 'product__name' // css class nane
-    let varClassNameCart = 'contCorz__product__nameCart' // css class nane
+    let varClassNameCart = 'contCart__product__nameCart' // css class nane
     let classPrise = 'product__prise' // css class img
-    let classPriseCart = 'contCorz__product__priseCart' // css class PriseCart
-    let classQuentlyCart = 'contCorz__product__quentlyCart' // css class PriseCart
+    let classPriseCart = 'contCart__product__priseCart' // css class PriseCart
+    let classQuentlyCart = 'contCart__product__quentlyCart' // css class PriseCart
     let classButton = 'product__button' // css class button
     let classButtonActiv = "product__button-activ" //css class activ
     let f = 1
@@ -95,26 +95,29 @@ function cart() {
 
     contDinPage.className = 'dinamikPage_Cart'
     contDinPage.innerHTML = `
-       <div class="headerCart">
+    <header class="headerCart">
         <h1 class="headerCart__h1">Задание: Работа над корзиной! </h1>
-        <div class="contCorz">
-            <input type="checkbox" id="cart" class="contCorz__input">
-                <label for="cart" class="contCorz__label" onclick="cartOpen()">
-                    <div class="contCorz__img"></div>
-                </label>
-                <div class="contCorz__contProduct" id="Cartt">
-                    <div class="productCart"></div>
-                    <div class="contCorz__summAndQuently">
-                        <span class="contCorz__text">Итого</span>
-                        <span class="contCorz__summ" id="sum">0</span>
-                        <span class="contCorz__quently" id="quently">0</span></div>
-                    <button class="contCorz__button" onclick="clean()" id="buttonCart">Корзина пуста</button>
-                </div>
-                <div class="contCorz__count" id="idcount">0</div>
-                <div class="contCorz__ollSum" id="idSum">0</div>
-            </div>
-        </div>
-        <div class="contProduct"></div>`
+        <div class="headerCart__iconCart">
+            <input type="checkbox" id="cart" class="headerCart__input">
+            <label for="cart" class="headerCart__label">
+                <div class="headerCart__img"></div>
+            </label>
+            <span class="headerCart__count" id="idcount">0</span>
+            <div class="contCart" id="Cartt">
+             <div class="productsCart"></div>
+             <div class="sumAndQuently">
+                <span class="sumAndQuently__text">Итого</span>
+                <span class="sumAndQuently__summ" id="sum">0</span>
+                <span class="sumAndQuently__quently" id="quently">0</span>
+             </div>
+             <button class="buttonCart" id="buttonCart">Корзина пуста</button>  
+          </div> 
+        </div> 
+    </header> 
+    <div class="contProduct"></div>`
+
+    //<label for="cart" class="headerCart__label" onclick="cartOpen()">
+    //<button class="sumAndQuently__button" onclick="clean()" id="buttonCart">Корзина пуста</button>  
 
     shop.buildAarr() // создаем  массив магазина
 
@@ -140,19 +143,12 @@ function cart() {
         }
     }
 
-    inputProduct([1,1,1,1,1,1,0]) // выводим карточки товара в HTML
+    inputProduct(LINK) // выводим карточки товара в HTML
 
-
-    /* 
-        let buttons = d.getElementsByClassName(classButton) // достаем массив объектов кнопок
-        for (let i = 0; i < buttons.length; i++) { // вешаем на кнопки обработчик
-            buttons[i].addEventListener('click', workClike)
-        } */
 
     d.querySelector('.contProduct').addEventListener('click', workClike)
 
     function workClike(e) {
-
 
         if ((e.target.className === classButton) || (e.target.className === classButtonActiv)) {
             shop.addObgToCard(e.target.id) // добавляем товар в корзину  по id
@@ -161,7 +157,7 @@ function cart() {
             console.log(shop)
             let countCat = d.getElementById('idcount') // элемент для вывода счетчика корзины
             countCat.innerHTML = shop.quently() //выводим счетчик корзины в html
-           // inputProductInCart()
+            inputProductInCart()
             let valueTegButtonCart = d.getElementById('buttonCart')
             valueTegButtonCart.innerHTML = "Очистить корзину"
             let SumCart = d.getElementById('sum')
@@ -172,45 +168,17 @@ function cart() {
         }
     }
 
-
-
-
-    /* 
-        function workClike() { // обработчик кликов
-
-            let per = this.parentNode // получаем родительский элемент
-            shop.addObgToCard(per.childNodes[3].id) // добавляем товар в корзину  по id
-            let valieId = per.childNodes[3].id - 1 // создаем перменную кликнутого id
-            arrId[valieId] == 0 ? arrId[valieId] = 1 : arrId[valieId]++ // считаем клики id
-            //per.childNodes[3].className = classButtonActiv // добавляем класс для нажатой кнопки 
-            per.childNodes[3].innerHTML = " в корзине (" + arrId[valieId] + " шт)" //меняем надпись на кнопке
-            let countCat = d.getElementById('idcount') // элемент для вывода счетчика корзины
-            let sCart = d.getElementById('idSum') // элемент для вывода сумы корзины
-            countCat.innerHTML = shop.quently() //выводим счетчик корзины в html
-            sCart.innerHTML = shop.summCart(1) + 'руб' //выводим суму корзины в html 
-            inputProductInCart()
-            let valueTegButtonCart = d.getElementById('buttonCart')
-            valueTegButtonCart.innerHTML = "Очистить корзину"
-            let SumCart = d.getElementById('sum')
-            SumCart.innerHTML = shop.summCart(1) + " руб"
-            let QuentlyCart = d.getElementById('quently')
-            QuentlyCart.innerHTML = shop.quently() + " шт."
-        }
-     */
-
     function createCartProduct(i) { //  функция создания карточки товара в корзине
-        let contShop = d.getElementsByClassName('productCart')[0]
-        let div = document.createElement('div');
-        div.className = "contCorz__product"
-      /*   contShop.appendChild(div)
-        let contImg = document.createElement('div');
-        contImg.className = "contCorz__contImg"
-        div.appendChild(contImg)
-        addElltoProduct(contImg, 'img', classImgCart, 'none', shop.cart[i].link, 'none')
-        addElltoProduct(div, 'h4', varClassNameCart, shop.cart[i].name, 'none', 'none')
-        addElltoProduct(div, 'span', classPriseCart, shop.cart[i].prise + ' руб', 'none', 'none')
-        addElltoProduct(div, 'span', classQuentlyCart, shop.cart[i].quentlyInCart + ' шт.', 'none', 'none')
-        console.log('dfdddddddddddddddddddd') */
+        let contShopCart = d.querySelector('.productsCart')
+        contShopCart.innerHTML += `
+        <div class="contCart__product">
+            <div class="contCart__product__contImg">
+                <img src="${shop.cart[i].link}" alt="imgCart" class="${classImgCart}">
+            </div>
+            <h4 class="${varClassNameCart}">${shop.cart[i].name}</h4>
+            <span class="${classPriseCart}">${shop.cart[i].prise} руб</span>
+            <span class="${ classQuentlyCart}">${shop.cart[i].quentlyInCart} шт.</span>
+        </div>`
     }
 
     function inputProductInCart() { // функция вывода карточек товара в корзину
@@ -223,19 +191,15 @@ function cart() {
 
 
     function dellElCartHTML() { //  функция удаления элементов  HTML из корзины
-        let elemsCart = d.getElementsByClassName('contCorz__product');
-        while (elemsCart[0]) {
-            elemsCart[0].parentNode.removeChild(elemsCart[0]);
-        }
+        let elemsCart = d.querySelector('.productsCart');
+        elemsCart.innerHTML = ''
     }
 
     function clean() { // функция полной очитски корзыны
-        let buttun = d.getElementsByClassName(classButtonActiv) // получаем родительский элемент
+        let buttun = d.getElementsByClassName(classButtonActiv) 
         arrId = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-        let sCart = d.getElementById('idSum') // элемент для вывода сумы корзины
         let countCat = d.getElementById('idcount') // элемент для вывода счетчика корзины
         countCat.innerHTML = 0;
-        sCart.innerHTML = shop.summCart(0)
         while (buttun.length != 0) {
             for (let i = 0; i < buttun.length; i++) {
                 buttun[i].innerHTML = " в корзине " //меняем надпись на кнопке
@@ -247,18 +211,21 @@ function cart() {
         let SumCart = d.getElementById('sum')
         SumCart.innerHTML = 0 + " руб"
         let QuentlyCart = d.getElementById('quently')
-        QuentlyCart.innerHTML = 0 + " шт."
+        QuentlyCart.innerHTML = 0 + " шт." 
+        shop.cart=[]
+        shop.summCart(0)
         dellElCartHTML()
     }
 
-
-    function cartOpen() { //обработка клика нажатия корзины
-        if (f === 1) {
-            $('#Cartt').slideToggle(400);
-            f = 0
-        } else {
-            $('#Cartt').slideUp(400);
-            f = 1
-        }
-    }
+    let but=d.querySelector('.buttonCart')
+    but.onclick = clean
+   d.querySelector('.headerCart__label').onclick = () => { //обработка клика нажатия корзины
+           if (f === 1) {
+               $('#Cartt').slideToggle(400);
+               f = 0
+           } else {
+               $('#Cartt').slideUp(400);
+               f = 1
+           }
+       } 
 }

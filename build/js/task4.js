@@ -7,6 +7,32 @@ arrObj = {
 }
 
 
+var fractal = {
+    a1: {
+        b1: {
+          c: 1
+        },
+        b2: {
+          c: 222
+        },
+        b3: {
+            c: {
+                d: 33,
+                e: 2.5,
+                f: {
+                    g: 9999,
+                    h: {
+                        i: {
+                            j: 1001,
+                            k: 'строка',
+                            l: [1,2,3]
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 
 
 outArr = []
@@ -16,8 +42,8 @@ function objectTraversal(arr) {
     for (const key in arr) {
         outArr.push(arr[key])
         if (typeof (arr[key]) === 'object') {
-          // objectTraversal(arr[key])
-            setTimeout(function () { objectTraversal(arr[key]) }, 1);
+         objectTraversal(arr[key])
+         //  setTimeout(function () { objectTraversal(arr[key]) }, 0);
 
         }   
     }
@@ -122,4 +148,5 @@ let shop = { //   создаем обЪект магазина
 shop.buildAarr()
 
 
-console.log(objectTraversal(shop))
+ //console.log(objectTraversal(shop)) 
+ console.log(objectTraversal(fractal))

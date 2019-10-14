@@ -491,3 +491,85 @@ body {
   border-bottom: 25px solid transparent;
   border-left: 32px solid #253664;
 }
+
+.calc {
+  flex: 1 0 auto;
+  margin: 52px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1400px;
+  width: 100%;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: content-box;
+  position: relative;
+  z-index: 50;
+}
+
+.calc::before {
+  content: "";
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url(./../img/fon4.jpg) center;
+  background-size: cover;
+  opacity: 0.4;
+  left: 0;
+  top: 0;
+  z-index: -200;
+}
+
+.bodyCalc {
+  display: flex;
+  flex-wrap: wrap;
+  width: 600px;
+  min-height: 500px;
+  background-color: #6b0863;
+  border-radius: 5px;
+  padding: 20px;
+  justify-content: center;
+  box-sizing: border-box;
+  border: 1px solid black;
+  -webkit-box-shadow: 0px -1px 47px 23px #333438;
+  -moz-box-shadow: 0px -1px 47px 23px #333438;
+  box-shadow: 0px -1px 47px 23px #333438;
+}
+
+.wind {
+  width: 100%;
+  height: 60px;
+  border-radius: 3px;
+  background-color: #a0eaec;
+}
+
+button {
+  border: 1px solid black;
+  display: flex;
+  margin: 5px;
+  flex: 1 0 auto;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  font-weight: 600;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  width: 30%;
+  height: auto;
+  border-radius: 3px;
+  outline: none;
+  background-color: gray;
+}
+
+button:hover {
+  background-color: #8b1b2a;
+}
+
+button:active {
+  transform: scale(0.9);
+}
+
+.opereation:last-child {
+  margin: 5px;
+  flex: 2 0 auto;
+}

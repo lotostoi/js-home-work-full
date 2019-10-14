@@ -11,8 +11,8 @@
   box-sizing: content-box;
   position: relative;
   z-index: 50;
-  &::before{
-    content: '';
+  &::before {
+    content: "";
     display: flex;
     position: absolute;
     width: 100%;
@@ -24,7 +24,6 @@
     top: 0;
     z-index: -200;
   }
-  
 
   &__h1 {
     font-size: 30px;
@@ -34,8 +33,12 @@
   &__mainImg {
     border-radius: 5px;
     display: block;
-    width: 1000px;
-    height: 600px;
+    width: 900px;
+    height: 500px;
+    margin: 20px 0;
+    -webkit-box-shadow: 0px -1px 47px 23px rgba(51,52,56,1);
+    -moz-box-shadow: 0px -1px 47px 23px rgba(51,52,56,1);
+    box-shadow: 0px -1px 47px 23px rgba(51,52,56,1);
   }
 
   &__contImgmin {
@@ -51,7 +54,6 @@
     width: 100px;
     height: 60px;
     transition: transform 200ms linear;
-
   }
 
   &__ImgH {
@@ -62,7 +64,6 @@
     transition: transform 200ms linear;
     transform: scale(1.2);
   }
-
 
   &__button:first-child {
     background-color: transparent;
@@ -78,7 +79,7 @@
     outline: none;
 
     &:hover {
-      border-right: 32px solid rgb(37, 54, 100);;
+      border-right: 32px solid rgb(37, 54, 100);
       border-top: 25px solid transparent;
       border-bottom: 25px solid transparent;
       border-left: none;
@@ -102,7 +103,7 @@
       border-right: none;
       border-top: 25px solid transparent;
       border-bottom: 25px solid transparent;
-      border-left: 32px solid rgb(37, 54, 100);;
+      border-left: 32px solid rgb(37, 54, 100);
     }
   }
 }

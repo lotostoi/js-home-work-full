@@ -397,7 +397,7 @@ body {
 }
 
 .PageGall::before {
-  content: '';
+  content: "";
   display: flex;
   position: absolute;
   width: 100%;
@@ -418,8 +418,12 @@ body {
 .PageGall__mainImg {
   border-radius: 5px;
   display: block;
-  width: 1000px;
-  height: 600px;
+  width: 900px;
+  height: 500px;
+  margin: 20px 0;
+  -webkit-box-shadow: 0px -1px 47px 23px #333438;
+  -moz-box-shadow: 0px -1px 47px 23px #333438;
+  box-shadow: 0px -1px 47px 23px #333438;
 }
 
 .PageGall__contImgmin {

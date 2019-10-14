@@ -202,7 +202,7 @@ function cart() {
         countCat.innerHTML = 0;
         while (buttun.length != 0) {
             for (let i = 0; i < buttun.length; i++) {
-                buttun[i].innerHTML = " в корзине " //меняем надпись на кнопке
+                buttun[i].innerHTML = " в корзину " //меняем надпись на кнопке
                 buttun[i].className = classButton
             }
         }

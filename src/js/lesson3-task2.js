@@ -196,7 +196,7 @@ function cart() {
     }
 
     function clean() { // функция полной очитски корзыны
-        let buttun = d.getElementsByClassName(classButtonActiv) 
+        let buttun = d.getElementsByClassName(classButtonActiv)
         arrId = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         let countCat = d.getElementById('idcount') // элемент для вывода счетчика корзины
         countCat.innerHTML = 0;
@@ -211,21 +211,25 @@ function cart() {
         let SumCart = d.getElementById('sum')
         SumCart.innerHTML = 0 + " руб"
         let QuentlyCart = d.getElementById('quently')
-        QuentlyCart.innerHTML = 0 + " шт." 
-        shop.cart=[]
+        QuentlyCart.innerHTML = 0 + " шт."
+        shop.cart = []
         shop.summCart(0)
         dellElCartHTML()
     }
 
-    let but=d.querySelector('.buttonCart')
+    let but = d.querySelector('.buttonCart')
     but.onclick = clean
-   d.querySelector('.headerCart__label').onclick = () => { //обработка клика нажатия корзины
-           if (f === 1) {
-               $('#Cartt').slideToggle(400);
-               f = 0
-           } else {
-               $('#Cartt').slideUp(400);
-               f = 1
-           }
-       } 
+
+    d.querySelector('.headerCart__label').onclick = () => { //обработка клика нажатия корзины
+        if (f === 1) {
+            $('#Cartt').slideToggle(400);
+            f = 0
+        } else {
+            $('#Cartt').slideUp(400);
+            f = 1
+        }
+
+    }
+
+  
 }

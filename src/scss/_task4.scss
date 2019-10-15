@@ -45,10 +45,17 @@
 }
 
 .wind {
+  display: flex;
   width: 100%;
   height: 60px;
   border-radius: 3px;
   background-color: rgb(160, 234, 236);
+  font-size: 30px;
+  font-weight: 600;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 5px 10px;
 }
 
 button {

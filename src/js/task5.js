@@ -1,3 +1,5 @@
+
+
 function calc() {
 
 
@@ -31,7 +33,7 @@ function calc() {
     `
     let var1 = ''
     let opereation = ''
-    let opereationReady = false 
+    let opereationReady = false
 
     let bodyCalc = d.querySelector('.bodyCalc')
     var win = d.querySelector('.wind')
@@ -51,18 +53,18 @@ function calc() {
     function collectNumber(event) {
         win = d.querySelector('.wind')
         if (event.target.dataset['number']) { //собираем число!
-            if (opereationReady) {win.innerHTML=''}
+            if (opereationReady) { win.innerHTML = '' }
             win.innerHTML += event.target.innerHTML
-            opereationReady=false 
+            opereationReady = false
         }
         if (event.target.dataset['opereation'] == 'clean') {
             win.innerHTML = ''
         }
-        if ((event.target.dataset['opereation'] == '-')||(event.target.dataset['opereation'] == '+')||(event.target.dataset['opereation'] == '*')||(event.target.dataset['opereation'] == '/')) {
+        if ((event.target.dataset['opereation'] == '-') || (event.target.dataset['opereation'] == '+') || (event.target.dataset['opereation'] == '*') || (event.target.dataset['opereation'] == '/')) {
             var1 = +win.innerHTML
             opereation = event.target.dataset['opereation']
             win.innerHTML = ''
-              console.log(event.target.dataset['opereation'])
+            console.log(event.target.dataset['opereation'])
         }
         if (event.target.dataset['opereation'] == '=') {
             switch (opereation) {
@@ -72,15 +74,69 @@ function calc() {
                     break
                 case '*': win.innerHTML = var1 * (+win.innerHTML)
                     break
-                case '/': ((+win.innerHTML) == 0 ) ? win.innerHTML = "Деление на 0!"  :  win.innerHTML = var1 / (+win.innerHTML)         
+                case '/': ((+win.innerHTML) == 0) ? win.innerHTML = "Деление на 0!" : win.innerHTML = var1 / (+win.innerHTML)
                     break
                 default: win.innerHTML = ''
             }
-            opereationReady=true
+            opereationReady = true
         }
     }
 
 
 
 
+    function str(arr) {
+        let startSk = 0 //индикатор начала скобки
+        let mas = [...arr]
+        let varArr = []
+        let count = 0
+        let opereation = ''
+        let var1 = 0
+        number = +0
+        mas.forEach((el, i) => {
+           // if (i === mas.length) {console.log(var1+' rrr')}
+           
+            if ((el !== '+')&&(el !== '-')&&(el !== '*')&&(el !== '/')) {
+                varArr.push(el)
+                console.log(el)
+            }
+            else {
+                if (count < 1) {
+                    var1 = +varArr.join('') 
+                    console.log('var1= '+ var1)
+                    varArr=[]                  
+                    count++
+                    console.log(count)
+                }  else {
+                    switch (el) {
+                        case '-': var1 = var1 - (+varArr.join())
+                        console.log('-')
+                            break
+                        case '+': var1 = var1 + (+varArr.join())
+                        console.log('+  o'+ var1  )
+                            break
+                        case '*': var1 = var1 * (+varArr.join())
+                        console.log('*')
+                            break
+                        case '/': var1 = var1 / (+varArr.join())
+                        console.log('/')
+                            break
+                        default: console.log ('Good')
+                       
+                    }
+                    varArr=[] 
+                    return   console.log('/' + var1)
+                } 
+
+            }
+
+
+        })
+
+    }
+
+  str('44+6') 
+
+
 }
+

@@ -339,6 +339,7 @@ body {
   font-size: 16px;
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
+  width: 70%;
 }
 
 .product__valuta {
@@ -364,6 +365,7 @@ body {
 }
 
 .product__button-activ {
+  font-size: 15px;
   font-family: Arial, Helvetica, sans-serif;
   border-radius: 5px;
   min-height: 35px;

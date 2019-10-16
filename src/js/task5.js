@@ -124,6 +124,9 @@ function calc() {
 
     }
 
+
+
+    
     function calcString(arr) { //функция считащаяя умножение и деление
         let mas = []
         arr.forEach((el, i) => {
@@ -205,6 +208,7 @@ function calc() {
         console.log(itog(calcString(allItog(str(string)))))
         return itog(calcString(allItog(str(string))))
     }
-    allCalc(str1)
+   console.log(allCalc(str1))
+   console.log(eval(str1))
 }
 

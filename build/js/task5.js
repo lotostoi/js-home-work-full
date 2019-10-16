@@ -85,58 +85,126 @@ function calc() {
 
 
 
-    function str(arr) {
-        let startSk = 0 //индикатор начала скобки
+    function str(arr) { //  функция приобразования строки в масив числе и операндов
         let mas = [...arr]
         let varArr = []
-        let count = 0
-        let opereation = ''
+        let Arr = []
+        let flag = 0
         let var1 = 0
         number = +0
+        /*   if (mas[mas.length - 1] === ')') {
+              mas.pop()
+              flag = 1
+          } */
+
         mas.forEach((el, i) => {
-           // if (i === mas.length) {console.log(var1+' rrr')}
-           
-            if ((el !== '+')&&(el !== '-')&&(el !== '*')&&(el !== '/')) {
+
+            if ((el !== '+') && (el !== '-') && (el !== '*') && (el !== '/') && (el !== ')') && (el !== '(') && ((mas.length - 1) !== i)) {
                 varArr.push(el)
-                console.log(el)
             }
             else {
-                if (count < 1) {
-                    var1 = +varArr.join('') 
-                    console.log('var1= '+ var1)
-                    varArr=[]                  
-                    count++
-                    console.log(count)
-                }  else {
-                    switch (el) {
-                        case '-': var1 = var1 - (+varArr.join())
-                        console.log('-')
-                            break
-                        case '+': var1 = var1 + (+varArr.join())
-                        console.log('+  o'+ var1  )
-                            break
-                        case '*': var1 = var1 * (+varArr.join())
-                        console.log('*')
-                            break
-                        case '/': var1 = var1 / (+varArr.join())
-                        console.log('/')
-                            break
-                        default: console.log ('Good')
-                       
-                    }
-                    varArr=[] 
-                    return   console.log('/' + var1)
-                } 
 
+
+                if (varArr.length > 0) {
+                    var1 = +varArr.join('')
+                    varArr = []
+                    Arr.push(var1)
+                    var1 = 0
+                }
+
+                if ((mas.length - 1) === i) {
+                    Arr.push(mas[mas.length - 1])                
+                }
+                if ((mas.length - 1) !== i) { Arr.push(el) }
             }
-
-
         })
+
+
+        return Arr
 
     }
 
-  str('44+6') 
+    function calcString(arr) { //функция считащаяя умножение и деление
+        let mas = []
+        arr.forEach((el, i) => {
+            if ((el === '*') || (el === '/')) {
+                if (el === '*') {
+                    arr.splice(i - 1, 3, (arr[i - 1] * arr[i + 1]))
+                }
+                if (el === '/') {
+                    arr.splice(i - 1, 3, (arr[i - 1] / arr[i + 1]))
+                }
+                calcString(arr)
+            } else {
+                mas = arr
+
+            }
+        })
+        return mas
+    }
 
 
+
+
+    function itog(arr) { //функция считащая сложение и вычитание 
+        let mas = []
+        arr.forEach((el, i) => {
+            if ((el === '+') || (el === '-')) {
+                if (el === '+') {
+                    arr.splice(i - 1, 3, (arr[i - 1] + arr[i + 1]))
+                }
+                if (el === '-') {
+                    arr.splice(i - 1, 3, (arr[i - 1] - arr[i + 1]))
+                }
+                itog(arr)
+            } else {
+                mas = arr
+
+            }
+        })
+        return mas
+    }
+
+
+    function allItog(arr) { // функция считающая выражения в скобках
+        let start = 0
+        let vArr = []
+        let flag = false
+        arr.forEach(function (el, i) {
+
+            if (el === '(') {
+                start = i
+                flag = true
+            }
+
+            if (flag) { vArr.push(el) }
+
+            if ((el === '(') && (flag)) {
+                start = i
+                vArr = []
+                vArr.push(el)
+            }
+
+
+            if (el === ')') {
+                vArr.pop()
+                vArr.shift()
+                arr.splice(start, (vArr.length + 2), itog(calcString(vArr))[0])
+                allItog(arr)
+            }
+        })
+        return arr
+    }
+
+
+    let str1 = '2*2+6*3'
+    console.log(str1)
+    console.log(str(str1))
+
+    function allCalc(string) {
+        console.log(itog(calcString(allItog(str(string)))))
+        return itog(calcString(allItog(str(string))))
+    }
+    allCalc(str1)
 }
 

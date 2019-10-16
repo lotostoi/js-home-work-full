@@ -1,152 +1,253 @@
-arrObj = {
-    row1: [{ t1: 1, t3: 3, t4: 4, t5: 5, t2: { test: 5, max: 20 } }],
-    row2: [{ t4: 4, t5: 5, t2: { dfd: 5, sdfd: 20 } }],
-    row3: [{ t1: 1, t3: { rr: 6, ww: 230 }, t4: 4, t5: 5, t2: { hh: '44', ll: 'tt' } }],
-    row4: [{ t1: 1, t3: 3, t4: 4, t5: 5, t2: { test: 5, max: 20 } }],
-    row5: [{ t1: 1, t3: 3, t4: 4, t5: 5 }]
-}
+function calc() {
 
 
-var fractal = {
-    a1: {
-        b1: {
-          c: 1
-        },
-        b2: {
-          c: 222
-        },
-        b3: {
-            c: {
-                d: 33,
-                e: 2.5,
-                f: {
-                    g: 9999,
-                    h: {
-                        i: {
-                            j: 1001,
-                            k: 'строка',
-                            l: [1,2,3]
-                        }
+    contDinPage.className = 'calc'
+
+    let arrButtons = [ //массив кнопок калькулятора [css-class] [data-х] [value data-x] [ value of tegs]
+        ['number', 'operation', 'clean', 'C'],
+        ['number', 'operation', '<<', '<<'],
+        ['number', 'number', '(', '('],
+        ['number', 'number', ')', ')'],
+        ['number', 'number', '0', '0'],
+        ['number', 'number', '1', '1'],
+        ['number', 'number', '2', '2'],
+        ['number', 'number', '3', '3'],
+        ['number', 'number', '4', '4'],
+        ['number', 'number', '5', '5'],
+        ['number', 'number', '6', '6'],
+        ['number', 'number', '7', '7'],
+        ['number', 'number', '8', '8'],
+        ['number', 'number', '9', '9'],
+        ['number', 'number', '.', '.'],
+        ['number', 'number', '-', '-'],
+        ['number', 'number', '+', '+'],
+        ['number', 'number', '*', '*'],
+        ['number', 'number', '/', '/'],
+        ['number', 'operation', '=', '='],
+
+
+    ]
+
+
+    contDinPage.innerHTML = `
+    <div class="bodyCalc">
+    <div class="wind"></div>
+    </div>
+    `
+    let var1 = ''
+    let opereation = ''
+    let opereationReady = false
+
+    let bodyCalc = d.querySelector('.bodyCalc')
+    var win = d.querySelector('.wind')
+    win.innerHTML = win.innerHTML = ''
+
+
+    arrButtons.forEach((el, i) => {
+        bodyCalc.innerHTML += `<button class="${el[0]}" data-${el[1]}="${el[2]}" >${el[3]}</button>`
+    })
+
+
+
+    bodyCalc.addEventListener('click', collectNumber)
+
+    function collectNumber(event) {
+        win = d.querySelector('.wind')
+        if (event.target.dataset['number']) {
+            if (opereationReady) {
+                win.innerHTML = ''
+            }
+            win.innerHTML += event.target.innerHTML
+
+            opereationReady = 0
+
+        }
+        if (event.target.dataset['operation'] === '=') {
+
+            let var1 = win.innerText
+
+            if (isNaN(allCalc(var1))) {
+                win.innerHTML = `<span style='color:rgb(139, 27, 42); font-weight: 400'>  Это не посчитать!!!  </span>`
+            } else
+            if (allCalc(var1) === Infinity) {
+                win.innerHTML = `<span style='color:rgb(139, 27, 42); font-weight: 400'>  Деление на 0!!  </span>`
+            } else {
+                win.innerHTML = allCalc(var1)
+            }
+
+            opereationReady = 1
+
+        }
+
+        if (event.target.dataset['operation'] === 'clean') {
+
+            win.innerHTML = ''
+        }
+        if (event.target.dataset['operation'] === '<<') {
+
+
+            let arr = [...win.innerText]
+
+            arr.pop()
+
+            win.innerHTML = arr.join('')
+
+        }
+
+    }
+
+    function str(arr) { //  функция приобразования строки в масив числе и операндов
+        let mas = [...arr]
+        let varArr = []
+        let Arr = []
+        let flag = 0
+        let var1 = 0
+        let start = 0
+
+        function rec() {
+            mas.forEach((el, i) => {
+
+                    if ((el !== '+') && (el !== '-') && (el !== '*') && (el !== '/') && (el !== ')') && (el !== '(') && ((mas.length - 1) !== i)) {
+                        Arr.push(el)
+                        if (flag===0) {start=i}
+                        flag=1
+                    } else {
+                        if ((el !== '+') && (el !== '-') && (el !== '*') && (el !== '/') && (el !== ')') && (el !== '(') && ((mas.length - 1) === i)) {Arr.push(el)}
+                        mas.splice(start,Arr.length, Arr.join(''))
+                        flag=0
+                        start=0
+                     //   rec()
                     }
-                }
-            }
-        }
+
+
+                    /*     } else {
+                    if (varArr.length > 0) {
+                        var1 = +varArr.join('')
+                        varArr = []
+                        Arr.push(var1)
+                        var1 = 0
+                    }
+    
+                  /*   if (((mas.length - 1) === i) && ((mas[mas.length - 1] === '+')) || ((mas[mas.length - 1] === '-')) || ((mas[mas.length - 1] === '*')) || ((mas[mas.length - 1] === '/'))) {
+                        Arr.push(mas[mas.length - 1])
+                    }
+                    if (((mas.length - 1) === i)) {
+                        varArr.push(el)
+                        var1 = +varArr.join('')
+                        varArr = []
+                        Arr.push(var1)
+                        var1 = 0
+                    } 
+    
+                    if ((mas.length - 1) !== i) {
+                        Arr.push(el)
+                    }  */
+                })
+                return mas
     }
+
+
+   
+
 }
 
+function calcString(arr) { //функция считащаяя умножение и деление
 
-outArr = []
-let i = 0
+    arr.forEach((el, i) => {
+        if ((el === '*') || (el === '/')) {
+            if (el === '*') {
 
-function objectTraversal(arr) {
-    for (const key in arr) {
-        outArr.push(arr[key])
-        if (typeof (arr[key]) === 'object') {
-         objectTraversal(arr[key])
-         //  setTimeout(function () { objectTraversal(arr[key]) }, 0);
-
-        }   
-    }
-    return outArr   
-}
-
-
-
-let linkPref = "./build/img/phon"
-const NAMES = ['5.9" Смартфон Samsung Galaxy A40 64 ГБ белый', '5.9" Смартфон Samsung Galaxy A40 64 ГБ красный', '5.9" Смартфон Samsung Galaxy A40 64 ГБ синий', '5.9" Смартфон Samsung Galaxy A40 64 ГБ черный', '6.4" Смартфон Samsung Galaxy A50 128 ГБ белый', '6.4" Смартфон Samsung Galaxy A50 128 ГБ синий', '6.4" Смартфон Samsung Galaxy A50 128 ГБ черный', '6.7" Смартфон Samsung Galaxy A70 128 ГБ белый', '6.7" Смартфон Samsung Galaxy A70 128 ГБ синий', '6.7" Смартфон Samsung Galaxy A80 128 ГБ золотистый', '6.7" Смартфон Samsung Galaxy A80 128 ГБ серебристый']
-const PRISE = [10000, 12000, 13000, 18000, 25000, 25000, 30000, 30000, 35000, 60000, 61000]
-const ID = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
-const LINK = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-const DATABASE = [NAMES, PRISE, ID, LINK]
-let arrId = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] // массив для подсчета кликнутых id
-let classProduct = 'product' // css class карточки товара
-let classProductCart = 'contCorz__product' // css class карточки товара
-let classImg = 'product__img' // css class img
-let classImgCart = 'contCart__product__imgCart' // css class img
-let varClassName = 'product__name' // css class nane
-let varClassNameCart = 'contCart__product__nameCart' // css class nane
-let classPrise = 'product__prise' // css class img
-let classPriseCart = 'contCart__product__priseCart' // css class PriseCart
-let classQuentlyCart = 'contCart__product__quentlyCart' // css class PriseCart
-let classButton = 'product__button' // css class button
-let classButtonActiv = "product__button-activ" //css class activ
-let f = 1
-
-LINK.forEach((e, i) => LINK[i] = linkPref + (i + 1) + '.jpg')
-
-
-
-let shop = { //   создаем обЪект магазина 
-    cotalog: [],
-    cart: [],
-    buildAarr: function () { // загружаем данные в обект из масивов бд
-        let objProduct = {
-            link: 0,
-            name: 0,
-            prise: 0,
-            id: 0,
-            quentlyInCart: 0
-        }
-        for (let i = 0; i < DATABASE[1].length; i++) {
-            objProduct = {
-                link: LINK[i],
-                name: NAMES[i],
-                prise: PRISE[i],
-                id: ID[i],
-                quentlyInCart: 0
-            }
-            this.cotalog.push(objProduct)
-        }
-    },
-    addObgToCard: function (idd) { // добавляем выбраные товары в корзину объекта
-        let fl = 0
-        for (let i = 0; i < this.cotalog.length; i++) {
-            if (this.cotalog[i].id == idd) {
-                if (this.cart.length === 0) {
-                    this.cart.push(this.cotalog[i])
-                    this.cart[0].quentlyInCart = 1
+                if (i === 0) {
+                    arr.splice(i, 2, (+arr[i + 1]))
                 } else {
-                    this.cart.forEach((el, j) => {
-                        if (this.cotalog[i].id === el.id) {
-                            this.cart[j].quentlyInCart += 1
-                            fl = 1
-                        }
-                    })
-                    if (fl === 0) {
-                        this.cotalog[i].quentlyInCart = 1
-                        this.cart.push(this.cotalog[i])
-                    }
+                    arr.splice(i - 1, 3, ((+arr[i - 1]) * (+arr[i + 1])))
+                }
+
+
+            }
+            if (el === '/') {
+                if (i === 0) {
+                    arr.splice(i, 2, (+arr[i + 1]))
+                } else {
+
+                    arr.splice(i - 1, 3, ((+arr[i - 1]) / (+arr[i + 1])))
+
                 }
             }
-        }
-    },
-    summCart: function (flag) { // считаем сумму стоимости всех товаров в корзине
-        let sum = 0;
-        if (flag === 1) {
-            this.cart.forEach((el, i) => {
-                sum += this.cart[i].prise * this.cart[i].quentlyInCart
-            })
-            return sum
-        }
-        if (flag === 0) {
-            this.cart = []
-            sum = 0
-            return sum
-        }
-    },
-    quently: function () { // число всех товаров в корзине
-        let summ = 0;
-        this.cart.forEach((el, i) => {
-            summ += el.quentlyInCart
-        })
-        return summ
-    }
+            calcString(arr)
+        } else {
 
+
+        }
+    })
+    return arr
 }
 
 
-shop.buildAarr()
+function itog(arr) { //функция считащая сложение и вычитание 
+
+    arr.forEach((el, i) => {
+        if ((el === '+') || (el === '-')) {
+            if (el === '+') {
+                if (i === 0) {
+                    arr.splice(i, 2, (+arr[i + 1]))
+                } else {
+                    arr.splice(i - 1, 3, ((+arr[i - 1]) + (+arr[i + 1])))
+                }
+            }
+            if (el === '-') {
+                if (i === 0) {
+                    arr.splice(i, 2, ((+arr[i + 1])) * (-1))
+                } else {
+                    arr.splice(i - 1, 3, ((+arr[i - 1]) - (+arr[i + 1])))
+                }
+            }
+            itog(arr)
+        } else {
 
 
- //console.log(objectTraversal(shop)) 
- console.log(objectTraversal(fractal))
+        }
+    })
+
+    return arr
+}
+
+
+function allItog(arr) { // функция считающая выражения в скобках
+    let start = 0
+    let vArr = []
+    let flag = false
+    arr.forEach(function (el, i) {
+
+        if (el === '(') {
+            start = i
+            flag = true
+        }
+
+        if (flag) {
+            vArr.push(el)
+        }
+
+        if ((el === '(') && (flag)) {
+            start = i
+            vArr = []
+            vArr.push(el)
+        }
+
+
+        if (el === ')') {
+            vArr.pop()
+            vArr.shift()
+            arr.splice(start, (vArr.length + 2), itog(calcString(vArr))[0])
+            allItog(arr)
+        }
+    })
+    return arr
+}
+
+function allCalc(string) { //функцияБ аналог eval() - когда  о ней узнал уже сам написал что то подобное)       
+    return itog(calcString(allItog(str(string))))[0]
+}
+console.log(str('5+55'))
+
+}

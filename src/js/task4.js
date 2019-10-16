@@ -111,43 +111,19 @@ function calc() {
                         Arr.push(el)
                         if (flag===0) {start=i}
                         flag=1
+                       // console.log(Arr)
                     } else {
-                        if ((el !== '+') && (el !== '-') && (el !== '*') && (el !== '/') && (el !== ')') && (el !== '(') && ((mas.length - 1) === i)) {Arr.push(el)}
+                      //  if ((el !== '+') && (el !== '-') && (el !== '*') && (el !== '/') && (el !== ')') && (el !== '(') && ((mas.length - 1) === i)) {Arr.push(el)}
                         mas.splice(start,Arr.length, Arr.join(''))
                         flag=0
                         start=0
-                     //   rec()
+                        console.log(mas)
+                     //  rec()
                     }
-
-
-                    /*     } else {
-                    if (varArr.length > 0) {
-                        var1 = +varArr.join('')
-                        varArr = []
-                        Arr.push(var1)
-                        var1 = 0
-                    }
-    
-                  /*   if (((mas.length - 1) === i) && ((mas[mas.length - 1] === '+')) || ((mas[mas.length - 1] === '-')) || ((mas[mas.length - 1] === '*')) || ((mas[mas.length - 1] === '/'))) {
-                        Arr.push(mas[mas.length - 1])
-                    }
-                    if (((mas.length - 1) === i)) {
-                        varArr.push(el)
-                        var1 = +varArr.join('')
-                        varArr = []
-                        Arr.push(var1)
-                        var1 = 0
-                    } 
-    
-                    if ((mas.length - 1) !== i) {
-                        Arr.push(el)
-                    }  */
                 })
                 return mas
     }
-
-
-   
+    rec()
 
 }
 
@@ -248,6 +224,6 @@ function allItog(arr) { // функция считающая выражения 
 function allCalc(string) { //функцияБ аналог eval() - когда  о ней узнал уже сам написал что то подобное)       
     return itog(calcString(allItog(str(string))))[0]
 }
-console.log(str('5+55'))
+console.log(str('5+55')+"==========")
 
 }

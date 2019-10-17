@@ -65,17 +65,19 @@ function calc() {
         if (event.target.dataset['operation'] === '=') {
 
             let var1 = win.innerText
+            try {
+                if (eval(var1) === Infinity) {
+                    win.innerHTML = `<span style='color:rgb(139, 27, 42); font-weight: 400'>  Деление на 0!!  </span>`
+                } else {
+                    win.innerHTML = eval(var1)
+                }
+            }catch (err) {
 
-            if (isNaN(allCalc(var1))) {
                 win.innerHTML = `<span style='color:rgb(139, 27, 42); font-weight: 400'>  Это не посчитать!!!  </span>`
-            } else
-            if (allCalc(var1) === Infinity) {
-                win.innerHTML = `<span style='color:rgb(139, 27, 42); font-weight: 400'>  Деление на 0!!  </span>`
-            } else {
-                win.innerHTML = allCalc(var1)
-            }
-
-            opereationReady = 1
+              
+              }
+            
+            opereationReady = 1 
 
         }
 
@@ -95,135 +97,5 @@ function calc() {
         }
 
     }
-
-    function str(arr) { //  функция приобразования строки в масив числе и операндов
-        let mas = [...arr]
-        let varArr = []
-        let Arr = []
-        let flag = 0
-        let var1 = 0
-        let start = 0
-
-        function rec() {
-            mas.forEach((el, i) => {
-
-                    if ((el !== '+') && (el !== '-') && (el !== '*') && (el !== '/') && (el !== ')') && (el !== '(') && ((mas.length - 1) !== i)) {
-                        Arr.push(el)
-                        if (flag===0) {start=i}
-                        flag=1
-                       // console.log(Arr)
-                    } else {
-                      //  if ((el !== '+') && (el !== '-') && (el !== '*') && (el !== '/') && (el !== ')') && (el !== '(') && ((mas.length - 1) === i)) {Arr.push(el)}
-                        mas.splice(start,Arr.length, Arr.join(''))
-                        flag=0
-                        start=0
-                        console.log(mas)
-                     //  rec()
-                    }
-                })
-                return mas
-    }
-    rec()
-
-}
-
-function calcString(arr) { //функция считащаяя умножение и деление
-
-    arr.forEach((el, i) => {
-        if ((el === '*') || (el === '/')) {
-            if (el === '*') {
-
-                if (i === 0) {
-                    arr.splice(i, 2, (+arr[i + 1]))
-                } else {
-                    arr.splice(i - 1, 3, ((+arr[i - 1]) * (+arr[i + 1])))
-                }
-
-
-            }
-            if (el === '/') {
-                if (i === 0) {
-                    arr.splice(i, 2, (+arr[i + 1]))
-                } else {
-
-                    arr.splice(i - 1, 3, ((+arr[i - 1]) / (+arr[i + 1])))
-
-                }
-            }
-            calcString(arr)
-        } else {
-
-
-        }
-    })
-    return arr
-}
-
-
-function itog(arr) { //функция считащая сложение и вычитание 
-
-    arr.forEach((el, i) => {
-        if ((el === '+') || (el === '-')) {
-            if (el === '+') {
-                if (i === 0) {
-                    arr.splice(i, 2, (+arr[i + 1]))
-                } else {
-                    arr.splice(i - 1, 3, ((+arr[i - 1]) + (+arr[i + 1])))
-                }
-            }
-            if (el === '-') {
-                if (i === 0) {
-                    arr.splice(i, 2, ((+arr[i + 1])) * (-1))
-                } else {
-                    arr.splice(i - 1, 3, ((+arr[i - 1]) - (+arr[i + 1])))
-                }
-            }
-            itog(arr)
-        } else {
-
-
-        }
-    })
-
-    return arr
-}
-
-
-function allItog(arr) { // функция считающая выражения в скобках
-    let start = 0
-    let vArr = []
-    let flag = false
-    arr.forEach(function (el, i) {
-
-        if (el === '(') {
-            start = i
-            flag = true
-        }
-
-        if (flag) {
-            vArr.push(el)
-        }
-
-        if ((el === '(') && (flag)) {
-            start = i
-            vArr = []
-            vArr.push(el)
-        }
-
-
-        if (el === ')') {
-            vArr.pop()
-            vArr.shift()
-            arr.splice(start, (vArr.length + 2), itog(calcString(vArr))[0])
-            allItog(arr)
-        }
-    })
-    return arr
-}
-
-function allCalc(string) { //функцияБ аналог eval() - когда  о ней узнал уже сам написал что то подобное)       
-    return itog(calcString(allItog(str(string))))[0]
-}
-console.log(str('5+55')+"==========")
 
 }

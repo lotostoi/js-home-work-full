@@ -15,13 +15,41 @@
       <h1 class="header__h1">The Js lesson 6</h1>
       <div class="header__ul">
         <a href="#_/main" class="header__a" target="_self" onclick="creatMainPage()"> Главная </a>
+        <a href="#_canvas" class="header__a" target="_self" onclick="WorkWithCanvas()"> Canvas </a>
         <a href="#_/Gal" class="header__a" target="_self" onclick="createGal()"> Галерея </a>
         <a href="#_/Корзина" class="header__a" target="_self" onclick="cart()"> Корзина </a>
-        <a href="#_/Calc" class="header__a" target="_self" onclick="calc()"> Калькулятор </a>      
-        <a href="#_/Calc" class="header__a" target="_self" onclick="obj()"> Обход объекта(рекурсия) </a> 
+        <a href="#_/Calc" class="header__a" target="_self" onclick="calc()"> Калькулятор </a>
+        <a href="#_/Calc" class="header__a" target="_self" onclick="obj()"> Обход объекта(рекурсия) </a>
       </div>
     </header>
-    <section class='dinamikPage'></section>
+    <section class='dinamikPage'>
+      <section class='lessonConvas'>
+        <div class="tools">
+          <button class="tools__tool" data-tools="pencil">Корандаш</button>
+          <button class="tools__tool" data-tools="line">Линия</button>
+          <button class="tools__tool" data-tools="fill">Заливка</button>
+          <button class="tools__tool" data-tools="pencil">Ластик</button>
+          <button class="tools__tool" data-tools="lastik">Круг</button>
+          <button class="tools__tool" data-tools="clean">Квадрат</button>
+          <div class="contForRange">
+            <span class="nameTools">Размер интрумента</span>
+            <input type="range" min="1" max="50" step="1" class="range">
+            <span class='minAndMax'>0 px</span>
+          </div>
+          <div class="contForColors">
+            <span class="nameTools">Цвет</span>
+            <input type="color" class="color">
+          </div>
+          <button class="tools__save" data-tools="save">Save</button>
+        </div>
+        <canvas width="900px" height="650px" class='canv'></canvas>
+        <div class="contCoord">
+          <span class="ord" id="x">0 </span>
+          <span class="ord" id="y">0 </span>
+        </div>
+      </section>
+    </section>
+
 
     <footer class='footer'></footer>
   </div>
@@ -31,8 +59,8 @@
   <script src="./build/js/task3.js"></script>
   <script src="./build/js/task4.js"></script>
   <script src="./build/js/task5.js"></script>
- // <script src="./build/js/jQuery.js"></script>
+  <script src="./build/js/Canvas.js"></script>
+  <script src="./build/js/jQuery.js"></script>
 </body>
 
 </html>
-

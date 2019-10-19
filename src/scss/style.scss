@@ -72,7 +72,9 @@ body {
   background: url(./../img/fon4.jpg) center;
   background-size: cover;
 }
-
+.lessonConvas {
+  display: none;
+}
 
 .footer {
   margin-top: 1px;
@@ -91,3 +93,5 @@ body {
 @import "task4"; 
 
 @import "task5"; 
+
+@import "canvas"; 

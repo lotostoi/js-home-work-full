@@ -78,6 +78,7 @@ body {
 
 .footer {
   margin-top: 1px;
+  max-width: 1400px;
   width: 100%;
   display: flex;
   flex: 0 0 auto;
@@ -86,12 +87,5 @@ body {
 }
 
 
-@import "task2"; 
-
-@import "task3"; 
-
-@import "task4"; 
-
-@import "task5"; 
 
 @import "canvas"; 

@@ -38,17 +38,17 @@ function WorkWithCanvas() {
             canv.addEventListener('mousedown', (evt) => {
                 canv.onmousemove = (evt) => {
                     if (this.flag === 1) {
-                        ctx.lineJoin = 'round'
                         ctx.beginPath()
                         ctx.strokeStyle = this.color()
                         ctx.moveTo(this.startX, this.startY)
+                        ctx.lineCap = 'round';
                         x = evt.offsetX
                         y = evt.offsetY
                         ctx.lineTo(x, y)
-                        ctx.lineWidth =this.thickness(),
+                        ctx.lineWidth = this.thickness(),
                             ctx.stroke();
                         ctx.fillStyle = this.color()
-                        ctx.arc(x, y,this.thickness() / 2, 0, Math.PI * 2, true)
+                        ctx.arc(x, y, this.thickness() / 2, 0, Math.PI * 2, true)
                         ctx.fill()
                         ctx.closePath()
                         this.startX = x
@@ -70,16 +70,17 @@ function WorkWithCanvas() {
                 if (evt.key === 'Control') {
                     canv.onclick = (evt) => {
                         if (this.flag === 3) {
-                                        
-                            ctx.lineJoin = 'round'
-                          //  ctx.miterLimit = 50;
-                            ctx.lineWidth =this.thickness() 
-                            ctx.beginPath()                       
+
+                            //  ctx.lineJoin = 'round'
+                            //  ctx.miterLimit = 50;
+                            ctx.lineWidth = this.thickness()
+                            ctx.beginPath()
                             ctx.moveTo(this.startX, this.startY)
+                            ctx.lineCap = 'round';
                             x = evt.offsetX
                             y = evt.offsetY
-                            ctx.lineTo(x, y) 
-                            ctx.strokeStyle = this.color()                       
+                            ctx.lineTo(x, y)
+                            ctx.strokeStyle = this.color()
                             ctx.stroke();
                             ctx.closePath()
                             this.startX = x
@@ -90,6 +91,7 @@ function WorkWithCanvas() {
             })
             d.addEventListener("keyup", (evt) => {
                 if (this.flag === 3) {
+                    canv.onclick = null
                     this.startX = canv.addEventListener('mousemove', (evt) => { evt.offsetX })
                     this.startY = canv.addEventListener('mousemove', (evt) => { evt.offsetY })
                 }
@@ -111,33 +113,50 @@ function WorkWithCanvas() {
                 canv.onmousemove = null
             })
         },
-        clean() {
-            ctx.clearRect(0, 0, 900, 650);
+        text() {
+            canv.addEventListener('click', (evt) => {
+                if (this.flag === 4) {
+                    console.log('bbbbbbbbbbbbgbb')
+                    ctx.font = '50px serif';
+                    ctx.fillText('Hello world', evt.offsetX, evt.offsetY);
+                }
+            })
         },
-        get workClick() {
+        clean() {
+            ctx.clearRect(0, 0, 1200, 650);
+        },
+        save() {
+            d.querySelector('.tools__save').href = canv.toDataURL("image/png")
+        },
+        workClick() {
             d.querySelector('.tools').addEventListener('click', (evt) => {
                 if (evt.target.dataset['tools'] === 'pencil') {
                     this.pancil()
                     this.flag = 1
                 }
-                if (evt.target.dataset['tools'] === 'lastik') { 
+                if (evt.target.dataset['tools'] === 'lastik') {
                     this.lastik()
                     this.flag = 2
-                 }
+                }
                 if (evt.target.dataset['tools'] === 'line') {
                     this.line()
                     this.flag = 3
                 }
+                if (evt.target.dataset['tools'] === 'text') {
+                    this.text()
+                    this.flag = 4
+                }
                 if (evt.target.dataset['tools'] === 'clean') { this.clean() }
+                if (evt.target.dataset['tools'] === 'save') { this.save() }
             })
         }
-       
+
 
     }
 
     canvas.range.createR()
     canvas.workmove()
-    canvas.workClick
+    canvas.workClick()
 
 
 }

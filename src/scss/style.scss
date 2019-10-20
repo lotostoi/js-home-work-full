@@ -24,6 +24,7 @@ body {
   display: flex;
   position: fixed;
   flex: 0 0 auto;
+  padding: 14px;
   background-color: #140e0a;
   align-items: center;
   justify-content: space-between;
@@ -72,10 +73,6 @@ body {
   background: url(./../img/fon4.jpg) center;
   background-size: cover;
 }
-.lessonConvas {
-  display: none;
-}
-
 .footer {
   margin-top: 1px;
   max-width: 1400px;

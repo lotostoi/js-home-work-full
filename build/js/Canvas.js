@@ -1,10 +1,10 @@
 
 
-function WorkWithCanvas() {
+
 
     contDinPage.className = 'canvas'
 
-    d.querySelector('.lessonConvas').classList.add('lessonConvasON')
+   // d.querySelector('.lessonConvas').classList.add('lessonConvasON')
     const canv = d.querySelector('.canv')
     ctx = canv.getContext('2d')
 
@@ -26,7 +26,7 @@ function WorkWithCanvas() {
         range: {
             val: d.querySelector('.range').value,
             createR: function () {
-                d.querySelector('.range').value = 0
+                d.querySelector('.range').value = 20
 
                 d.querySelector('.range').oninput = () => {
                     let pole = d.querySelector('.minAndMax')
@@ -70,9 +70,6 @@ function WorkWithCanvas() {
                 if (evt.key === 'Control') {
                     canv.onclick = (evt) => {
                         if (this.flag === 3) {
-
-                            //  ctx.lineJoin = 'round'
-                            //  ctx.miterLimit = 50;
                             ctx.lineWidth = this.thickness()
                             ctx.beginPath()
                             ctx.moveTo(this.startX, this.startY)
@@ -100,6 +97,7 @@ function WorkWithCanvas() {
         lastik() {
             canv.addEventListener('mousedown', () => {
                 canv.onmousemove = (evt) => {
+                    if (this.flag === 2) {
                     x = evt.offsetX
                     y = evt.offsetY
                     ctx.fillStyle = '#fff'
@@ -107,6 +105,7 @@ function WorkWithCanvas() {
                     ctx.arc(x, y, this.thickness(), 0, Math.PI * 2, true)
                     ctx.fill()
                     ctx.closePath()
+                    }
                 }
             })
             canv.addEventListener('mouseup', () => {
@@ -114,16 +113,22 @@ function WorkWithCanvas() {
             })
         },
         text() {
+            d.querySelector("#text").className = 'texttON'
+            d.querySelector("#text").value = ''
             canv.addEventListener('click', (evt) => {
                 if (this.flag === 4) {
-                    console.log('bbbbbbbbbbbbgbb')
-                    ctx.font = '50px serif';
-                    ctx.fillText('Hello world', evt.offsetX, evt.offsetY);
+                    d.querySelector("#text").className = 'textt'
+                    ctx.font = `${this.thickness()}px serif`
+                    ctx.fillStyle = this.color()
+                    ctx.fillText(d.querySelector("#text").value, evt.offsetX, evt.offsetY);
+
                 }
             })
         },
         clean() {
+          
             ctx.clearRect(0, 0, 1200, 650);
+            
         },
         save() {
             d.querySelector('.tools__save').href = canv.toDataURL("image/png")
@@ -146,8 +151,14 @@ function WorkWithCanvas() {
                     this.text()
                     this.flag = 4
                 }
-                if (evt.target.dataset['tools'] === 'clean') { this.clean() }
-                if (evt.target.dataset['tools'] === 'save') { this.save() }
+                if (evt.target.dataset['tools'] === 'clean') {
+                    this.clean()
+                    this.flag = 5
+                }
+                if (evt.target.dataset['tools'] === 'save') {
+                    this.save()
+                    this.flag = 6
+                }
             })
         }
 
@@ -159,5 +170,5 @@ function WorkWithCanvas() {
     canvas.workClick()
 
 
-}
+
 

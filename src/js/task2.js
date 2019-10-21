@@ -56,26 +56,26 @@ let shop = {                                         //   создаем обЪ�
     createPageShop: function () {
         this.buildAarr(LINK, NAMES, PRISE, ID)
         this.pushHtml()
-        this.addClickHandlers() 
-        this.cleanCart()
+        this.addClickHandlers()
+        // this.cleanCart()
     },
     addObgToCard: function (idd) { // добавляем выбраные товары в корзину объекта
         let fl = 0
-        for (let i = 0; i < this.contentShop.length; i++) {
-            if (this.contentShop[i].id == idd) {
-                if (this.contentCart.length === 0) {
-                    this.contentCart.push(this.contentShop[i])
-                    this.contentCart[0].quentlyInCart = 1
+        for (let i = 0; i < shop.contentShop.length; i++) {
+            if (shop.contentShop[i].id == idd) {
+                if (shop.contentCart.length === 0) {
+                    shop.contentCart.push(shop.contentShop[i])
+                    shop.contentCart[0].quentlyInCart = 1
                 } else {
-                    this.contentCart.forEach((el, j) => {
-                        if (this.contentShop[i].id === el.id) {
-                            this.contentCart[j].quentlyInCart += 1
+                    shop.contentCart.forEach((el, j) => {
+                        if (shop.contentShop[i].id === el.id) {
+                            shop.contentCart[j].quentlyInCart += 1
                             fl = 1
                         }
                     })
                     if (fl === 0) {
-                        this.contentShop[i].quentlyInCart = 1
-                        this.contentCart.push(this.contentShop[i])
+                        shop.contentShop[i].quentlyInCart = 1
+                        shop.contentCart.push(shop.contentShop[i])
 
                     }
                 }
@@ -93,7 +93,7 @@ let shop = {                                         //   создаем обЪ�
                  <h4 class="${varClassNameCart}">${this.contentCart[i].name}</h4>
                  <span class="${classPriseCart}">${this.contentCart[i].prise} руб</span>
                  <span class="${ classQuentlyCart}">${this.contentCart[i].quentlyInCart} шт.</span>
-                 <button class="contCart__product__del"> &#10008 </button>
+                 <button class="contCart__product__del" data-id='${this.contentCart[i].id}'> &#10008 </button>
              </div>`
         })
     },
@@ -119,23 +119,22 @@ let shop = {                                         //   создаем обЪ�
         return summ
     },
     cleanCart: function () {
-        d.querySelector('.buttonCart').onclick = clean// функция полной очитски корзыны
-        function clean() {
-            let buttun = d.getElementsByClassName(classButtonActiv)
-            d.getElementById('idcount').innerHTML = 0 // элемент для вывода счетчика корзины
-            while (buttun.length != 0) {
-                for (let i = 0; i < buttun.length; i++) {
-                    buttun[i].innerHTML = " в корзину " //меняем надпись на кнопке
-                    buttun[i].className = classButton
-                }
+        let buttun = d.getElementsByClassName(classButtonActiv)
+        d.getElementById('idcount').innerHTML = 0 // элемент для вывода счетчика корзины
+        while (buttun.length != 0) {
+            for (let i = 0; i < buttun.length; i++) {
+                buttun[i].innerHTML = " в корзину " //меняем надпись на кнопке
+                buttun[i].className = classButton
             }
-            d.getElementById('buttonCart').innerHTML = "Корзина пуста"
-            d.getElementById('sum').innerHTML = 0 + " руб"
-            d.getElementById('quently').innerHTML = 0 + " шт."
-            shop.contentCart=[]
-            shop.summCart(0)
-            d.querySelector('.productsCart').innerHTML = ''
         }
+        d.getElementById('buttonCart').innerHTML = "Корзина пуста"
+        d.getElementById('sum').innerHTML = 0 + " руб"
+        d.getElementById('quently').innerHTML = 0 + " шт."
+        shop.contentCart = []
+        shop.summCart(0)
+        d.querySelector('.productsCart').innerHTML = ''
+
+
         let f = 1
         d.querySelector('.headerCart__label').onclick = () => { //обработка клика нажатия корзины
             if (f === 1) {
@@ -145,23 +144,52 @@ let shop = {                                         //   создаем обЪ�
                 $('#Cartt').slideUp(200);
                 f = 1
             }
-        
+
+        }
+    },
+    clickHandler: function (evt) {
+        if (evt.target.dataset['id']) {
+            shop.addObgToCard.call(this, evt.target.dataset['id'])
+            shop.pushHtmlCart()
+            evt.target.className = classButtonActiv
+            evt.target.innerHTML = "в корзине (" + shop.contentShop[evt.target.dataset['id'] - 1].quentlyInCart + " шт)"
+            d.getElementById('idcount').innerHTML = shop.quently()
+            d.getElementById('buttonCart').innerHTML = "Очистить корзину"
+            d.getElementById('sum').innerHTML = shop.summCart(1) + " руб"
+            d.getElementById('quently').innerHTML = shop.quently() + " шт."
+        }
+    },
+
+    dellOneElFromCart: function (evt) {
+        if (evt.target.dataset['id']) {
+            shop.contentCart.forEach((el, i) => {
+                if (el.id == evt.target.dataset['id']) {
+                    shop.contentCart[i].quentlyInCart--
+
+                }
+               
+            })
+            d.getElementById('idcount').innerHTML = shop.quently()
+
+
+
+            shop.contentCart.forEach((el,i)=> {
+                if ((el.quentlyInCart) == 0) {
+                    shop.contentCart.splice(i, 1)
+                    console.log(shop.contentCart) 
+                }
+
+            })
+
+
+            shop.pushHtmlCart()
         }
     },
 
     addClickHandlers: function () {  //Вешаем обработчик кликов на контейнер для товаров      
-        this.HtmlContShop.addEventListener('click', (evt) => {
-            if (evt.target.dataset['id']) {
-                this.addObgToCard(evt.target.dataset['id'])
-                this.pushHtmlCart()
-                evt.target.className = classButtonActiv
-                evt.target.innerHTML = "в корзине (" + this.contentShop[evt.target.dataset['id'] - 1].quentlyInCart + " шт)"
-                d.getElementById('idcount').innerHTML = this.quently()
-                d.getElementById('buttonCart').innerHTML = "Очистить корзину"
-                d.getElementById('sum').innerHTML = this.summCart(1) + " руб"
-                d.getElementById('quently').innerHTML = this.quently() + " шт."
-            }
-        })
+        this.HtmlContShop.addEventListener('click', this.clickHandler)
+        d.querySelector('.buttonCart').onclick = this.cleanCart// функция полной очитски корзыны
+        d.querySelector('.contCart').addEventListener('click', this.dellOneElFromCart)
     }
 }
 

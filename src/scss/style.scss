@@ -1,5 +1,5 @@
-body {
-  margin: 8px;
+ body {
+//  margin: 8px;
   height: 100vh;
 }
 
@@ -10,7 +10,8 @@ body {
   width: 100%;
   min-height: 100%;
   flex-direction: column;
-  background-color: white;
+  background-color: rgb(247, 244, 244);
+  border: 1px solid rgb(199, 194, 194);
   align-items: center;
   font-size: 16px;
  // justify-content: center;
@@ -18,63 +19,292 @@ body {
   box-sizing: content-box;
 }
 
-.header {
+
+.headerCart {
+  position: fixed;
   max-width: 1400px;
   width: 100%;
   display: flex;
-  position: fixed;
-  flex: 0 0 auto;
-  background-color: #140e0a;
-  align-items: center;
+  background-color: #050505;
   justify-content: space-between;
+  align-items: center;
   box-sizing: border-box;
-  z-index: 100;
+  padding: 30px 100px;
 
   &__h1 {
-    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
     color: #ffffff;
-    margin: 0 0 0 10%;
+  }
+  &__iconCart {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+  }
+  &__label {
+    width: 420px;
+    display: flex;
+    justify-content: flex-end;
+    z-index: 50;
+    border-radius: 3px;
+    padding: 10px 70px 10px 0;
+    box-sizing: border-box;
+    border: 1px solid rgba(255, 255, 255, 0);
+  }
+  &__input {
+    display: none;
+
+    &:checked ~ .contCart {
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      height: auto;
+    }
+
+    &:checked ~ .headerCart__label {
+      background-color: #ebe8e4;
+      border: 1px solid rgb(167, 164, 164);
+    }
+
+    &:checked ~ .headerCart__label > div {
+      background: url(./../img/rkest.png) no-repeat;
+      background-position: center;
+      background-size: contain;
+      z-index: 100;
+    }
+
+    &:checked ~ .headerCart__count {
+      visibility: hidden;
+    }
+
+    &:checked ~ .contCorz__ollSum {
+      visibility: hidden;
+    }
   }
 
-  &__ul {
+  &__img {
+    width: 50px;
+    height: 50px;
+    background: url(./../img/korzina.png) no-repeat;
+    background-position: center;
+    background-size: contain;
+    z-index: 100;
+  }
+  &__count {
     display: flex;
-    margin-right: 10%;
+    position: absolute;
+    visibility: visible;
+    justify-content: center;
     align-items: center;
-  }
-
-  &__a {
-    display: flex;
-    font-size: 17px;
-    color: #bae7eb;
-    margin: 16px 10px;
-    text-decoration: none;
-
-    cursor: pointer;
-    &:hover {
-      color: rgb(228, 230, 119);
-    }
-    &:active {
-      color: rgb(230, 132, 119);
-    }
-    &:focus {
-      color: rgb(241, 35, 8);
-    }
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    top: 2px;
+    left: 319px;
+    text-align: center;
+    background-color: #ffffff;
   }
 }
-
-.dinamikPage {
-  margin-top: 52px;
-  flex: 1 0 auto;
-  display: flex;
-  max-width: 1400px;
-  width: 100%;
-  flex-direction: column;
-  background: url(./../img/fon4.jpg) center;
-  background-size: cover;
-}
-.lessonConvas {
+.contCart {
+  position: absolute;
+  width: 398px;
   display: none;
+  background-color: #ebe8e4;
+  border: 1px solid rgb(167, 164, 164);
+  border-radius: 3px;
+  padding: 10px;
+  top: 73px;
+  right: 0;
+  box-sizing: content-box;
 }
+
+.contCart__product {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #a8a0a0;
+  margin: 1px 0;
+  &__contImg {
+    display: flex;
+    background-color: #ffffff;
+    width: 45px;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    height: 61px;
+  }
+  &__imgCart {
+    height: 90% !important;
+  }
+
+  &__nameCart {
+    width: 200px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: #000000;
+  }
+
+  &__priseCart {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    width: 80px;
+    text-align: center;
+    color: #000000;
+    margin-right: 5px;
+  }
+
+  &__quentlyCart {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    width: 50px;
+    color: #000000;
+    margin-right: -1px;
+  }
+}
+
+.sumAndQuently {
+  height: 30px;
+  display: flex;
+  justify-content: flex-end;
+  background-color: #a8a0a0;
+  align-items: center;
+  margin: 1px 0;
+  &__quently {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #000000;
+    width: 50px;
+    text-align: center;
+    margin-right: 5px;
+  }
+  &__summ {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #000000;
+    width: 80px;
+    text-align: center;
+    margin-right: 5px;
+  }
+  &__text {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    font-style: italic;
+    color: rgb(8, 8, 8);
+    width: 200px;
+    text-align: center;
+    margin-right: 50px;
+  }
+}
+
+.buttonCart {
+  display: flex;
+  outline: none;
+  border: 1px solid #a8a0a0;
+  //  border-radius: 6px;
+  margin: 10px 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #000000;
+  width: 180px;
+  min-height: 30px;
+  justify-content: center;
+  background-color: #a8a0a0;
+  transition: transform 200ms linear;
+
+  &:hover {
+    background-color: rgb(70, 67, 67);
+    color: white;
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+}
+
+.contProduct {
+  display: flex;
+  flex-wrap: wrap;
+  width: 98%;
+  justify-content: space-around;
+  padding: 5px;
+  margin-top: 135px;
+  
+}
+
+.product {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  border: 1px solid rgb(209, 200, 200);
+  border-radius: 3px;
+  margin: 5px 0;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 5px;
+  justify-content: space-between;
+  box-sizing: border-box;
+
+  &__img {
+    height: 60% !important;
+  }
+
+  &__name {
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    width: 70%;
+  }
+
+  &__valuta {
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  &__button {
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: darkgray;
+    border-radius: 5px;
+    width: 45%;
+    min-height: 35px;
+    border: none;
+    outline: none;
+    transition: background-color 100ms linear, color 100ms linear, width 200ms linear;
+
+    &:hover {
+      background-color: #443023;
+      color: rgb(245, 239, 239);
+    }
+
+    &-activ {
+      font-size: 15px;
+      font-family: Arial, Helvetica, sans-serif;
+      border-radius: 5px;
+      min-height: 35px;
+      border: none;
+      outline: none;
+      color: white;
+      transition: background-color 100ms linear, color 100ms linear, width 200ms linear;
+      background-color: #664834;
+      color: rgb(245, 239, 239);
+      width: 47%;
+
+      &:hover {
+        background-color: #443023;
+        color: rgb(245, 239, 239);
+      }
+    }
+  }
+}
+
+
+
 
 .footer {
   margin-top: 1px;
@@ -86,12 +316,6 @@ body {
 }
 
 
-@import "task2"; 
 
-@import "task3"; 
 
-@import "task4"; 
-
-@import "task5"; 
-
-@import "canvas"; 
+ 

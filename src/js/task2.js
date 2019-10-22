@@ -36,7 +36,6 @@ let shop = {   //   создаем обЪект магазина
             this.contentShop.push(objProduct)
         })
     },
-
     pushHtml: function () {
         this.contentShop.forEach((el, i) => {
             this.HtmlContShop.innerHTML += `
@@ -122,24 +121,11 @@ let shop = {   //   создаем обЪект магазина
                 buttun[i].className = classButton
             }
         }
-        d.getElementById('buttonCart').innerHTML = "Корзина пуста"
         d.getElementById('sum').innerHTML = 0 + " руб"
         d.getElementById('quently').innerHTML = 0 + " шт."
         shop.contentCart = []
         shop.summCart(0)
         d.querySelector('.productsCart').innerHTML = ''
-
-        /* let f = 1
-        d.querySelector('.headerCart__label').onclick = () => { //обработка клика нажатия корзины
-            if (f === 1) {
-                $('#Cartt').slideToggle(200);
-                f = 0
-            } else {
-                $('#Cartt').slideUp(200);
-                f = 1
-            }
-
-        } */
     },
     clickHandler: function (evt) {
         if (evt.target.dataset['id']) {
@@ -148,12 +134,10 @@ let shop = {   //   создаем обЪект магазина
             evt.target.className = classButtonActiv
             evt.target.innerHTML = "в корзине (" + shop.contentShop[evt.target.dataset['id'] - 1].quentlyInCart + " шт)"
             d.getElementById('idcount').innerHTML = shop.quently()
-            d.getElementById('buttonCart').innerHTML = "Очистить корзину"
             d.getElementById('sum').innerHTML = shop.summCart(1) + " руб"
             d.getElementById('quently').innerHTML = shop.quently() + " шт."
         }
     },
-
     dellOneElFromCart: function (evt) {
         if (evt.target.dataset['id']) {
             shop.contentCart.forEach((el, i) => {
@@ -184,11 +168,10 @@ let shop = {   //   создаем обЪект магазина
             shop.pushHtmlCart()
         }
     },
-
-    addClickHandlers: function () {  //Вешаем обработчик кликов на контейнер для товаров      
-        this.HtmlContShop.addEventListener('click', this.clickHandler)
+    addClickHandlers: function () {  //Вешаем обработчики кликов      
+        this.HtmlContShop.addEventListener('click', this.clickHandler) // обработчик кнопок магазина
         d.querySelector('.buttonCart').onclick = this.cleanCart// функция полной очитски корзыны
-        d.querySelector('.contCart').addEventListener('click', this.dellOneElFromCart)
+        d.querySelector('.contCart').addEventListener('click', this.dellOneElFromCart) // убрать один элемент из корзины
     }
 }
 

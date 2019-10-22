@@ -120,9 +120,20 @@ body {
   border: 1px solid #a7a4a4;
   border-radius: 3px;
   padding: 10px;
-  top: 73px;
+  top: 86px;
   right: 0;
   box-sizing: content-box;
+}
+
+.contCart::before {
+  content: '';
+  display: block;
+  border-right: 20px solid transparent;
+  border-left: 20px solid transparent;
+  border-bottom: 20px solid #dbdbdb;
+  position: absolute;
+  top: -20px;
+  right: 68px;
 }
 
 .contCart__product {
@@ -149,6 +160,8 @@ body {
 }
 
 .contCart__product__nameCart {
+  justify-content: center;
+  align-items: center;
   width: 200px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
@@ -157,6 +170,8 @@ body {
 }
 
 .contCart__product__priseCart {
+  justify-content: center;
+  align-items: center;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
   font-weight: 600;
@@ -167,6 +182,8 @@ body {
 }
 
 .contCart__product__quentlyCart {
+  justify-content: center;
+  align-items: center;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
   font-weight: 600;
@@ -187,6 +204,10 @@ body {
   font-size: 14px;
 }
 
+.contCart__product__del:hover {
+  color: red;
+}
+
 .contCart__product__del:active {
   transform: scale(0.95);
 }
@@ -201,31 +222,38 @@ body {
 }
 
 .sumAndQuently__quently {
+  justify-content: center;
+  align-items: center;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
-  color: #ffffff;
+  color: #f58383;
   width: 50px;
   text-align: center;
-  margin-right: 5px;
+  margin-right: 58px;
 }
 
 .sumAndQuently__summ {
+  justify-content: center;
+  align-items: center;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
-  color: #ffffff;
-  width: 80px;
+  color: #f58383;
+  width: 130px;
   text-align: center;
-  margin-right: 5px;
+  margin-right: -4px;
 }
 
 .sumAndQuently__text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
   font-style: italic;
-  color: #ffffff;
+  color: #f58383;
   width: 200px;
   text-align: center;
   margin-right: 50px;

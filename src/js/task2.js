@@ -17,13 +17,9 @@ let classPriseCart = 'contCart__product__priseCart' // css class PriseCart
 let classQuentlyCart = 'contCart__product__quentlyCart' // css class PriseCart
 let classButton = 'product__button' // css class button
 let classButtonActiv = "product__button-activ" //css class activ
-
-
 LINK.forEach((e, i) => LINK[i] = linkPref + (i + 1) + '.jpg')
 
-
-
-let shop = {                                         //   создаем обЪект магазина 
+let shop = {   //   создаем обЪект магазина 
     contentShop: [],
     contentCart: [],
     HtmlContShop: d.querySelector('.contProduct'),
@@ -53,11 +49,10 @@ let shop = {                                         //   создаем обЪ�
         })
     },
 
-    createPageShop: function () {
+    initShop: function () {
         this.buildAarr(LINK, NAMES, PRISE, ID)
         this.pushHtml()
         this.addClickHandlers()
-        // this.cleanCart()
     },
     addObgToCard: function (idd) { // добавляем выбраные товары в корзину объекта
         let fl = 0
@@ -91,7 +86,7 @@ let shop = {                                         //   создаем обЪ�
                      <img src="${this.contentCart[i].link}" alt="imgCart" class="${classImgCart}">
                  </div>
                  <h4 class="${varClassNameCart}">${this.contentCart[i].name}</h4>
-                 <span class="${classPriseCart}">${this.contentCart[i].prise} руб</span>
+                 <span class="${classPriseCart}">${this.contentCart[i].prise * this.contentCart[i].quentlyInCart} руб</span>
                  <span class="${ classQuentlyCart}">${this.contentCart[i].quentlyInCart} шт.</span>
                  <button class="contCart__product__del" data-id='${this.contentCart[i].id}'> &#10008 </button>
              </div>`
@@ -134,8 +129,7 @@ let shop = {                                         //   создаем обЪ�
         shop.summCart(0)
         d.querySelector('.productsCart').innerHTML = ''
 
-
-        let f = 1
+        /* let f = 1
         d.querySelector('.headerCart__label').onclick = () => { //обработка клика нажатия корзины
             if (f === 1) {
                 $('#Cartt').slideToggle(200);
@@ -145,7 +139,7 @@ let shop = {                                         //   создаем обЪ�
                 f = 1
             }
 
-        }
+        } */
     },
     clickHandler: function (evt) {
         if (evt.target.dataset['id']) {
@@ -166,22 +160,27 @@ let shop = {                                         //   создаем обЪ�
                 if (el.id == evt.target.dataset['id']) {
                     shop.contentCart[i].quentlyInCart--
 
+                    d.querySelectorAll('.product__button-activ').forEach((ell, j) => {
+                        if (ell.dataset['id'] == evt.target.dataset['id']) {
+                            d.querySelectorAll('.product__button-activ')[j].innerHTML ="в корзине (" + shop.contentCart[i].quentlyInCart + " шт)"
+                            d.getElementById('sum').innerHTML = shop.summCart(1) + " руб"
+                            d.getElementById('quently').innerHTML = shop.quently() + " шт."
+
+                            shop.contentCart.forEach((elll, k) => {
+                                if ((elll.quentlyInCart) == 0) {
+                                    shop.contentCart.splice(k, 1)
+                                    d.querySelectorAll('.product__button-activ')[j].innerHTML = "в корзину"
+                                    d.querySelectorAll('.product__button-activ')[j].className = classButton
+                                   
+                                }
+                            })
+                        }
+                    })
+
                 }
-               
+
             })
             d.getElementById('idcount').innerHTML = shop.quently()
-
-
-
-            shop.contentCart.forEach((el,i)=> {
-                if ((el.quentlyInCart) == 0) {
-                    shop.contentCart.splice(i, 1)
-                    console.log(shop.contentCart) 
-                }
-
-            })
-
-
             shop.pushHtmlCart()
         }
     },
@@ -193,7 +192,7 @@ let shop = {                                         //   создаем обЪ�
     }
 }
 
-shop.createPageShop()
+shop.initShop()
 
 
 

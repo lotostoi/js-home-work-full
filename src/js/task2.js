@@ -80,7 +80,7 @@ let shop = {   //   создаем обЪект магазина
         this.contShopCart.innerHTML = ''
         this.contentCart.forEach((el, i) => {
             this.contShopCart.innerHTML +=
-                `<div class="contCart__product">
+                `<div class="contCart__product" id='id${this.contentCart[i].id}'>
                  <div class="contCart__product__contImg">
                      <img src="${this.contentCart[i].link}" alt="imgCart" class="${classImgCart}">
                  </div>
@@ -146,17 +146,56 @@ let shop = {   //   создаем обЪект магазина
 
                     d.querySelectorAll('.product__button-activ').forEach((ell, j) => {
                         if (ell.dataset['id'] == evt.target.dataset['id']) {
-                            d.querySelectorAll('.product__button-activ')[j].innerHTML ="в корзине (" + shop.contentCart[i].quentlyInCart + " шт)"
+                            d.querySelectorAll('.product__button-activ')[j].innerHTML = "в корзине (" + shop.contentCart[i].quentlyInCart + " шт)"
                             d.getElementById('sum').innerHTML = shop.summCart(1) + " руб"
                             d.getElementById('quently').innerHTML = shop.quently() + " шт."
+                            d.getElementById('idcount').innerHTML = shop.quently()
 
                             shop.contentCart.forEach((elll, k) => {
                                 if ((elll.quentlyInCart) == 0) {
                                     shop.contentCart.splice(k, 1)
                                     d.querySelectorAll('.product__button-activ')[j].innerHTML = "в корзину"
                                     d.querySelectorAll('.product__button-activ')[j].className = classButton
-                                   
+                                    let IDD = '#id' + evt.target.dataset['id']
+                                    console.log(IDD)
+
+
+
+                                    delay(0.1)
+
+
+                                    function delay(step) {
+                                        console.log('tets')
+                                        let op = 1
+                                        while (op > 0) {
+                                            op -= +step
+                                            if (op < 0) op = 0
+                                            setInterval(function(){
+                                                print.call(d.querySelector(IDD))
+                                            }, 5000)
+                                            
+                                            function  print() {
+
+                                                
+                                                this.style.opacity =`${op}`
+                                                console.log(this)
+                                           
+
+                                            }
+                                           // d.querySelector(IDD).style.opacity =`${op}`
+                                           
+                                          //  console.log(op)
+                                            //  return op
+                                        }
+
+
+                                    }
+                                    // d.querySelector(IDD).classList.add('contCart__product-none')
+
+                                } else {
+                                    shop.pushHtmlCart()
                                 }
+
                             })
                         }
                     })
@@ -164,8 +203,8 @@ let shop = {   //   создаем обЪект магазина
                 }
 
             })
-            d.getElementById('idcount').innerHTML = shop.quently()
-            shop.pushHtmlCart()
+
+            // shop.pushHtmlCart()
         }
     },
     addClickHandlers: function () {  //Вешаем обработчики кликов      

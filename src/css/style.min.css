@@ -132,7 +132,7 @@ body {
 }
 
 .contCart::before {
-  content: '';
+  content: "";
   display: block;
   border-right: 20px solid transparent;
   border-left: 20px solid transparent;
@@ -217,6 +217,10 @@ body {
 
 .contCart__product__del:active {
   transform: scale(0.95);
+}
+
+.contCart__product-none {
+  display: none;
 }
 
 .sumAndQuently {

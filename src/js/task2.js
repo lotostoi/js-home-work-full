@@ -161,40 +161,12 @@ let shop = {   //   создаем обЪект магазина
 
 
 
-                                    delay(0.1)
-
-
-                                    function delay(step) {
-                                        console.log('tets')
-                                        let op = 1
-                                        while (op > 0) {
-                                            op -= +step
-                                            if (op < 0) op = 0
-                                            setInterval(function(){
-                                                print.call(d.querySelector(IDD))
-                                            }, 5000)
-                                            
-                                            function  print() {
-
-                                                
-                                                this.style.opacity =`${op}`
-                                                console.log(this)
-                                           
-
-                                            }
-                                           // d.querySelector(IDD).style.opacity =`${op}`
-                                           
-                                          //  console.log(op)
-                                            //  return op
-                                        }
-
+                                    
 
                                     }
                                     // d.querySelector(IDD).classList.add('contCart__product-none')
 
-                                } else {
-                                    shop.pushHtmlCart()
-                                }
+                                
 
                             })
                         }
@@ -204,7 +176,7 @@ let shop = {   //   создаем обЪект магазина
 
             })
 
-            // shop.pushHtmlCart()
+             shop.pushHtmlCart()
         }
     },
     addClickHandlers: function () {  //Вешаем обработчики кликов      

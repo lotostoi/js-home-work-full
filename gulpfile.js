@@ -10,6 +10,7 @@ const sass = require ('gulp-sass');
 const cssFiles = ['./node_modules/normalize.css/normalize.css',
    // './src/css/header.css',
     './src/css/style.min.css'
+  
 ];
 
 
@@ -56,7 +57,9 @@ function scss() {
 			//outputStyle: 'compressed'
 			outputStyle: 'expanded'
 		}))
-		.on('error', console.error.bind(console))
+		.on('error', function(error) {
+			// у нас ошибка
+			done(error);})
         .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest('./src/css'))
         .pipe(browserSync.stream());
